@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>JNE</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>JNE</H1>
+
+<!-- Breve descrizione -->
+<P>Salta se maggiore o uguale.</P>
+
+<H2>Codice operativo: 39</H2>
+
+<P>N.B.: Il codice operativo <CODE>39</CODE> &egrave; condiviso con
+le altre <A href="mixal.html#jumps">istruzioni di salto</A> con
+condizioni basate sugli indicatori:
+<A href="JE.html"><CODE>JE</CODE></A>,
+<A href="JG.html"><CODE>JG</CODE></A>,
+<A href="JGE.html"><CODE>JGE</CODE></A>,
+<A href="JL.html"><CODE>JL</CODE></A>,
+<A href="JLE.html"><CODE>JLE</CODE></A>,
+<A href="JMP.html"><CODE>JMP</CODE></A>,
+<A href="JNOV.html"><CODE>JNOV</CODE></A>,
+<A href="JOV.html"><CODE>JOV</CODE></A> e
+<A href="JSJ.html"><CODE>JSJ</CODE></A>.</P>
+
+<H2>Modificatore: 08</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>08</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>La condizione di questa istruzione di salto &egrave; che l'indicatore
+di confronto, <CODE>CM</CODE>, indichi che l'ultima operazione di confronto
+non abbia dato "uguale" come risultato.
+Se tale condizione &egrave; vera, l'indirizzo dell'istruzione successiva
+viene caricato nel registro di salto <CODE>rJ</CODE>, e l'esecuzione salta
+all'indirizzo dell'operando <VAR>M</VAR>.</P>
+
+<P>In simboli: se &not;(<CODE>CM</CODE> = <CODE>'='</CODE>),</P>
+<BLOCKQUOTE>
+  <CODE>rJ</CODE> &#8592; <VAR>P</VAR>,<BR>
+  <VAR>P</VAR> &#8592; <VAR>M</VAR>,
+</BLOCKQUOTE>
+dove <VAR>P</VAR> rappresenta l'indirizzo della prossima istruzione che
+deve essere eseguita.
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD><CODE>TERM</CODE></TD>
+    <TD><STRONG><A href="EQU.html"><CODE>EQU</CODE></A></STRONG></TD>
+    <TD><CODE>19</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>NUM1</CODE></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>123</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>NUM2</CODE></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>456</CODE></TD>
+  </TR>
+  <TR>
+    <TD width=80><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="LDA.html"><CODE>LDA</CODE></A></STRONG></TD>
+    <TD><CODE>NUM1</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="CMPA.html"><CODE>CMPA</CODE></A></STRONG></TD>
+    <TD><CODE>NUM2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>JNE</CODE></STRONG></TD>
+    <TD><CODE>DIVERSO</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="LDA.html"><CODE>LDA</CODE></A></STRONG></TD>
+    <TD><CODE>SIMBOLI(3:3)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="STA.html"><CODE>STA</CODE></A></STRONG></TD>
+    <TD><CODE>SEGNO(2:2)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="JMP.html"><CODE>JMP</CODE></A></STRONG></TD>
+    <TD><CODE>RISPONDE</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>DIVERSO</CODE></TD>
+    <TD><STRONG><A href="LDA.html"><CODE>LDA</CODE></A></STRONG></TD>
+    <TD><CODE>SIMBOLI(1:2)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="STA.html"><CODE>STA</CODE></A></STRONG></TD>
+    <TD><CODE>SEGNO(2:3)</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>RISPONDE</CODE></TD>
+    <TD><STRONG><A href="OUT.html"><CODE>OUT</CODE></A></STRONG></TD>
+    <TD><CODE>MSG(TERM)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>SIMBOLI</CODE></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"&lt;&gt;=&lt;="</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>MSG</CODE></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"NUM1&nbsp;"</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>SEGNO</CODE></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"NUM2."</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>scrive sul terminale il messaggio
+"<CODE>NUM1&nbsp;&nbsp;&lt;&gt;&nbsp;&nbsp;NUM2.</CODE>".</P>
+
+<H2>Vedi anche</H2>
+
+<P>Le altre <A href="mixal.html#jumps">istruzioni di salto</A>.</P>
+
+</BODY>
+</HTML>

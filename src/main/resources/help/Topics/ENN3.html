@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>ENN3</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>ENN3</H1>
+
+<!-- Breve descrizione -->
+<P>Inserisce l'indirizzo dell'operando cambiato di segno nel registro
+<CODE>rI3</CODE>.</P>
+
+<H2>Codice operativo: 51</H2>
+
+<P>N.B.: Il codice operativo <CODE>51</CODE> &egrave; condiviso con
+le istruzioni
+<A href="INC3.html"><CODE>INC3</CODE></A>,
+<A href="DEC3.html"><CODE>DEC3</CODE></A> e
+<A href="ENT3.html"><CODE>ENT3</CODE></A>.</P>
+
+<H2>Modificatore: 03</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>03</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>L'indirizzo dell'operando <VAR>M</VAR>, cambiato di segno,
+viene caricato nel registro <CODE>rI3</CODE>.
+Si noti che, in questa istruzione, &minus;<VAR>M</VAR> non viene
+interpretato come un indirizzo, ma semplicemente come un valore numerico
+da assegnare immediatamente al registro indice.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rI3</CODE> &#8592; &minus;<VAR>M</VAR>.
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="ENT1.html"><CODE>ENT1</CODE></A></STRONG></TD>
+    <TD><CODE>2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>ENN3</CODE></STRONG></TD>
+    <TD><CODE>3,1</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rI3</CODE> = <CODE>- 00 05</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="ENT3.html"><CODE>ENT3</CODE></A>.</P>
+
+</BODY>
+</HTML>

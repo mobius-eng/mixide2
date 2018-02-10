@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>DIV</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>DIV</H1>
+
+<!-- Breve descrizione -->
+<P>Esegue la divisione intera tra il registro <CODE>rAX</CODE> e l'operando;
+   lascia il quoziente nel registro <CODE>rA</CODE>
+   e il resto nel registro <CODE>rX</CODE>.</P>
+
+<H2>Codice operativo: 04</H2>
+
+<P>N.B.: Il codice operativo <CODE>01</CODE> &egrave; condiviso con
+l'istruzione <A href="FDIV.html"><CODE>FDIV</CODE></A>.</P>
+
+<H2>Modificatore</H2>
+
+<P>Il modificatore viene interpretato come specifica di campo
+dell'operando; per <EM>default</EM> vale <CODE>05</CODE> e specifica
+dunque la parola intera (0:5).</P>
+
+<H2>Descrizione</H2>
+
+<P>Viene eseguita la divisione intera del contenuto del registro esteso <CODE>rAX</CODE>
+per il contenuto dell'operando <VAR>V</VAR>;
+il quoziente viene depositato nel registro <CODE>rA</CODE> sostituendo il valore precedente,
+mentre il resto della divisione viene depositato nel registro <CODE>rX</CODE> sostituendo
+il valore precedente.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rA</CODE> &#8592; <CODE>rAX</CODE> / <VAR>V</VAR>,<BR>
+  <CODE>rX</CODE> &#8592; <CODE>rAX</CODE> (<em>mod</em> <VAR>V</VAR>).
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=80><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="LDX.html"><CODE>LDX</CODE></A></STRONG></TD>
+    <TD><CODE>DIVIDENDO</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ENTA.html"><CODE>ENTA</CODE></A></STRONG></TD>
+    <TD><CODE>0</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>DIV</CODE></STRONG></TD>
+    <TD><CODE>DIVISORE</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>DIVIDENDO</CODE></TD>
+    <TD><STRONG><A href="CON-directive.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>17</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>DIVISORE</CODE></TD>
+    <TD><STRONG><A href="CON-directive.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>3</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rA</CODE> = <CODE>+ 00 00 00 00 05</CODE> e
+   <CODE>rX</CODE> = <CODE>+ 00 00 00 00 02</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="FDIV.html"><CODE>FDIV</CODE></A>.</P>
+
+</BODY>
+</HTML>

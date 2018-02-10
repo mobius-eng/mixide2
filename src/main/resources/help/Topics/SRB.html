@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>SRB</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>SRB</H1>
+
+<!-- Breve descrizione -->
+<P>Fa scorrere a destra in binario il registro <CODE>rAX</CODE>.</P>
+
+<H2>Codice operativo: 06</H2>
+
+<P>N.B.: Il codice operativo <CODE>06</CODE> &egrave; condiviso con
+le altre istruzioni di scorrimento
+<A href="SLA.html"><CODE>SLA</CODE></A>,
+<A href="SRA.html"><CODE>SRA</CODE></A>,
+<A href="SLAX.html"><CODE>SLAX</CODE></A>,
+<A href="SRAX.html"><CODE>SRAX</CODE></A>,
+<A href="SLC.html"><CODE>SLC</CODE></A>,
+<A href="SRC.html"><CODE>SRC</CODE></A> e
+<A href="SLB.html"><CODE>SLB</CODE></A>.</P>
+
+<H2>Modificatore: 07</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>07</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>Il registro esteso <CODE>rAX</CODE> viene fatto scorrere a destra di un
+numero di <EM>bit</EM> pari al valore dell'indirizzo dell'operando <VAR>M</VAR>.
+Il segno del registro <CODE>rAX</CODE> non viene modificato.
+Si noti che, se <VAR>M</VAR> &lt; 0, l'istruzione non produce alcun effetto.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rAX</CODE> &#8592; <CODE>rAX</CODE> &#8901; 2<SUP>&minus;<VAR>M</VAR></SUP>.
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="ENTA.html"><CODE>ENTA</CODE></A></STRONG></TD>
+    <TD><CODE>2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ENTX.html"><CODE>ENTX</CODE></A></STRONG></TD>
+    <TD><CODE>32</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>SRB</CODE></STRONG></TD>
+    <TD><CODE>2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rAX</CODE> = <CODE>+ 00 00 00 00 00 32 00 00 00 08</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="SLB.html"><CODE>SLB</CODE></A>.</P>
+
+</BODY>
+</HTML>

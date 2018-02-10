@@ -1,0 +1,396 @@
+# This is the table of MIXAL opcodes used by the MIXAL assembler
+# Do not modify this file unless you know what you are doing!
+
+# symbolic names of operations:
+NOP = 0
+NOP_F = 0
+
+ADD = 1
+
+FADD = 1
+FADD_F = 6
+
+SUB = 2
+
+FSUB = 2
+FSUB_F = 6
+
+MUL = 3
+
+FMUL = 3
+FMUL_F = 6
+
+DIV = 4
+
+FDIV = 4
+FDIV_F = 6
+
+NUM = 5
+NUM_F = 0
+
+CHAR = 5
+CHAR_F = 1
+
+HLT = 5
+HLT_F = 2
+
+FLOT = 5
+FLOT_F = 6
+
+FIX = 5
+FIX_F = 7
+
+SLA = 6
+SLA_F = 0
+
+SRA = 6
+SRA_F = 1
+
+SLAX = 6
+SLAX_F = 2
+
+SRAX = 6
+SRAX_F = 3
+
+SLC = 6
+SLC_F = 4
+
+SRC = 6
+SRC_F = 5
+
+SLB = 6
+SLB_F = 6
+
+SRB = 6
+SRB_F = 7
+
+MOVE = 7
+MOVE_F = 1
+
+LDA = 8
+LD1 = 9
+LD2 = 10
+LD3 = 11
+LD4 = 12
+LD5 = 13
+LD6 = 14
+LDX = 15
+
+LDAN = 16
+LD1N = 17
+LD2N = 18
+LD3N = 19
+LD4N = 20
+LD5N = 21
+LD6N = 22
+LDXN = 23
+
+STA = 24
+ST1 = 25
+ST2 = 26
+ST3 = 27
+ST4 = 28
+ST5 = 29
+ST6 = 30
+STX = 31
+
+STJ = 32
+STJ_F = 2
+
+STZ = 33
+
+JBUS = 34
+JBUS_F = 0
+
+IOC = 35
+IOC_F = 0
+
+IN = 36
+IN_F = 0
+
+OUT = 37
+OUT_F = 0
+
+JRED = 38
+JRED_F = 0
+
+JMP = 39
+JMP_F = 0
+
+JSJ = 39
+JSJ_F = 1
+
+JOV = 39
+JOV_F = 2
+
+JNOV = 39
+JNOV_F = 3
+
+JL = 39
+JL_F = 4
+
+JE = 39
+JE_F = 5
+
+JG = 39
+JG_F = 6
+
+JGE = 39
+JGE_F = 7
+
+JNE = 39
+JNE_F = 8
+
+JLE = 39
+JLE_F = 9
+
+JAN = 40
+JAN_F = 0
+
+JAZ = 40
+JAZ_F = 1
+
+JAP = 40
+JAP_F = 2
+
+JANN = 40
+JANN_F = 3
+
+JANZ = 40
+JANZ_F = 4
+
+JANP = 40
+JANP_F = 5
+
+JAE = 40
+JAE_F = 6
+
+JAO = 40
+JAO_F = 7
+
+J1N = 41
+J1N_F = 0
+
+J1Z = 41
+J1Z_F = 1
+
+J1P = 41
+J1P_F = 2
+
+J1NN = 41
+J1NN_F = 3
+
+J1NZ = 41
+J1NZ_F = 4
+
+J1NP = 41
+J1NP_F = 5
+
+J2N = 42
+J2N_F = 0
+
+J2Z = 42
+J2Z_F = 1
+
+J2P = 42
+J2P_F = 2
+
+J2NN = 42
+J2NN_F = 3
+
+J2NZ = 42
+J2NZ_F = 4
+
+J2NP = 42
+J2NP_F = 5
+
+J3N = 43
+J3N_F = 0
+
+J3Z = 43
+J3Z_F = 1
+
+J3P = 43
+J3P_F = 2
+
+J3NN = 43
+J3NN_F = 3
+
+J3NZ = 43
+J3NZ_F = 4
+
+J3NP = 43
+J3NP_F = 5
+
+J4N = 44
+J4N_F = 0
+
+J4Z = 44
+J4Z_F = 1
+
+J4P = 44
+J4P_F = 2
+
+J4NN = 44
+J4NN_F = 3
+
+J4NZ = 44
+J4NZ_F = 4
+
+J4NP = 44
+J4NP_F = 5
+
+J5N = 45
+J5N_F = 0
+
+J5Z = 45
+J5Z_F = 1
+
+J5P = 45
+J5P_F = 2
+
+J5NN = 45
+J5NN_F = 3
+
+J5NZ = 45
+J5NZ_F = 4
+
+J5NP = 45
+J5NP_F = 5
+
+J6N = 46
+J6N_F = 0
+
+J6Z = 46
+J6Z_F = 1
+
+J6P = 46
+J6P_F = 2
+
+J6NN = 46
+J6NN_F = 3
+
+J6NZ = 46
+J6NZ_F = 4
+
+J6NP = 46
+J6NP_F = 5
+
+JXN = 47
+JXN_F = 0
+
+JXZ = 47
+JXZ_F = 1
+
+JXP = 47
+JXP_F = 2
+
+JXNN = 47
+JXNN_F = 3
+
+JXNZ = 47
+JXNZ_F = 4
+
+JXNP = 47
+JXNP_F = 5
+
+JXE = 47
+JXE_F = 6
+
+JXO = 47
+JXO_F = 7
+
+INCA = 48
+INCA_F = 0
+DECA = 48
+DECA_F = 1
+ENTA = 48
+ENTA_F = 2
+ENNA = 48
+ENNA_F = 3
+
+INC1 = 49
+INC1_F = 0
+DEC1 = 49
+DEC1_F = 1
+ENT1 = 49
+ENT1_F = 2
+ENN1 = 49
+ENN1_F = 3
+
+INC2 = 50
+INC2_F = 0
+DEC2 = 50
+DEC2_F = 1
+ENT2 = 50
+ENT2_F = 2
+ENN2 = 50
+ENN2_F = 3
+
+INC3 = 51
+INC3_F = 0
+DEC3 = 51
+DEC3_F = 1
+ENT3 = 51
+ENT3_F = 2
+ENN3 = 51
+ENN3_F = 3
+
+INC4 = 52
+INC4_F = 0
+DEC4 = 52
+DEC4_F = 1
+ENT4 = 52
+ENT4_F = 2
+ENN4 = 52
+ENN4_F = 3
+
+INC5 = 53
+INC5_F = 0
+DEC5 = 53
+DEC5_F = 1
+ENT5 = 53
+ENT5_F = 2
+ENN5 = 53
+ENN5_F = 3
+
+INC6 = 54
+INC6_F = 0
+DEC6 = 54
+DEC6_F = 1
+ENT6 = 54
+ENT6_F = 2
+ENN6 = 54
+ENN6_F = 3
+
+INCX = 55
+INCX_F = 0
+DECX = 55
+DECX_F = 1
+ENTX = 55
+ENTX_F = 2
+ENNX = 55
+ENNX_F = 3
+
+CMPA = 56
+
+FCMP = 56
+FCMP_F = 6
+
+CMP1 = 57
+CMP2 = 58
+CMP3 = 59
+CMP4 = 60
+CMP5 = 61
+CMP6 = 62
+CMPX = 63
+
+# etc...
+
+# directives (also called by Knuth "pseudo-operations"):
+# WARNING: these cannot be modified without changing the code of the MixAssembler class!
+EQU = 64
+ORIG = 65
+CON = 66
+ALF = 67
+END = 68

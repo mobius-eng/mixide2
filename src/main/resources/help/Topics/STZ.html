@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>STZ</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>STZ</H1>
+
+<!-- Breve descrizione -->
+<P>Azzera l'operando.</P>
+
+<H2>Codice operativo: 33</H2>
+
+<H2>Modificatore</H2>
+
+<P>Il modificatore viene interpretato come specifica di campo
+dell'operando; per <EM>default</EM> vale <CODE>05</CODE> e specifica
+dunque la parola intera (0:5).</P>
+
+<H2>Descrizione</H2>
+
+<P>L'operando <VAR>V</VAR> viene azzerato.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <VAR>V</VAR> &#8592; 0.
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><CODE>STZ</CODE></STRONG></TD>
+    <TD><CODE>ARG</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>ARG</CODE></TD>
+    <TD><STRONG><A href="CON-directive.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con la cella di memoria all'indirizzo <CODE>ARG</CODE>
+contenente la parola <CODE>+ 00 00 00 00 00</CODE>.</P>
+
+</BODY>
+</HTML>

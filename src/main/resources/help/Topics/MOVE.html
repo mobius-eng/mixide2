@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>MOVE</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>MOVE</H1>
+
+<!-- Breve descrizione -->
+<P>Sposta in memoria un blocco di parole dall'indirizzo dell'operando
+all'indirizzo contenuto nel registro <CODE>rI1</CODE>.</P>
+
+<H2>Codice operativo: 07</H2>
+
+<H2>Modificatore</H2>
+
+<P>Il modificatore viene interpretato come specifica della dimensione
+(cio&egrave;, il numero di parole) <VAR>n</VAR> del blocco di parole
+di memoria che deve essere spostato;
+per <EM>default</EM> vale <CODE>01</CODE> e specifica
+dunque un blocco costituito da un'unica parola di memoria, <VAR>n</VAR> = 1.
+Ovviamente, la dimensione massima del blocco da spostare &egrave; 63,
+il massimo numero rappresentabile in un <EM>byte</EM>.</P>
+
+<H2>Descrizione</H2>
+
+<P>Le parole di memoria a partire dall'indirizzo dell'operando <VAR>M</VAR>
+fino all'indirizzo <VAR>M</VAR> + <VAR>n</VAR> &minus; 1 compreso
+vengono copiate a partire dall'indirizzo contenuto nel registro indice
+<CODE>rI1</CODE> e fino all'indirizzo dato da
+<CODE>rI1</CODE> + <VAR>n</VAR> &minus; 1 compreso.</P>
+<P>Il registro indice <CODE>rI</CODE> non viene modificato.</P>
+<P>Si noti che lo spostamento delle parole dall'indirizzo di partenza a
+quello di destinazione non &egrave; istantaneo, ma avviene in modo sequenziale,
+una parola per volta, dalla prima del blocco all'ultima.
+Di conseguenza, se l'area di memoria di partenza e quella di destinazione
+sono sovrapposte, alcune parole del blocco di partenza potrebbero essere
+sovrascritte <EM>prima</EM> di essere copiate. Ci&ograve; avviene quando
+<VAR>M</VAR> &lt; <CODE>rI1</CODE> &lt; <VAR>M</VAR> + <VAR>n</VAR>.</P>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ORIG.html"><CODE>ORIG</CODE></A></STRONG></TD>
+    <TD><CODE>0</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>DEST</CODE></TD>
+    <TD><STRONG><A href="EQU.html"><CODE>EQU</CODE></A></STRONG></TD>
+    <TD><CODE>1000</CODE></TD>
+  </TR>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="ENT1.html"><CODE>ENT1</CODE></A></STRONG></TD>
+    <TD><CODE>DEST</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>MOVE</CODE></STRONG></TD>
+    <TD><CODE>STRINGA(3)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>STRINGA</CODE></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"BLOCC"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"O DI "</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"TESTO"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>copia la stringa di caratteri <CODE>"BLOCCO DI TESTO"</CODE>, che occupa
+tre celle di memoria, nella tre celle di memoria situate agli indirizzi
+<CODE>1000</CODE>, <CODE>1001</CODE> e <CODE>1002</CODE>.</P>
+
+</BODY>
+</HTML>

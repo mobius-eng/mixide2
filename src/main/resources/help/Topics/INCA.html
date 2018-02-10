@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>INCA</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>INCA</H1>
+
+<!-- Breve descrizione -->
+<P>Incrementa il registro <CODE>rA</CODE>.</P>
+
+<H2>Codice operativo: 48</H2>
+
+<P>N.B.: Il codice operativo <CODE>48</CODE> &egrave; condiviso con
+le istruzioni
+<A href="DECA.html"><CODE>DECA</CODE></A>,
+<A href="ENTA.html"><CODE>ENTA</CODE></A> e
+<A href="ENNA.html"><CODE>ENNA</CODE></A>.</P>
+
+<H2>Modificatore: 00</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>00</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>L'indirizzo dell'operando <VAR>M</VAR> viene sommato al registro
+<CODE>rA</CODE>; in altre parole, il registro <CODE>rA</CODE> viene
+incrementato di <VAR>M</VAR>. Ovviamente, se <VAR>M</VAR> < 0, il
+registo <CODE>rA</CODE> viene di fatto decrementato.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rA</CODE> &#8592; <CODE>rA</CODE> + <VAR>M</VAR>.
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="LDA.html"><CODE>LDA</CODE></A></STRONG></TD>
+    <TD><CODE>ARG</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>INCA</CODE></STRONG></TD>
+    <TD><CODE>1</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>ARG</CODE></TD>
+    <TD><STRONG><A href="CON-directive.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rA</CODE> = <CODE>+ 00 00 00 00 03</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="DECA.html"><CODE>DECA</CODE></A>.</P>
+
+</BODY>
+</HTML>

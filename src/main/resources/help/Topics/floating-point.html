@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>Rappresentazione dei numeri in virgola mobile</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>Rappresentazione dei numeri in virgola mobile</H1>
+
+<P>La rappresentazione in virgola mobile in base 64 utilizzata dalla macchina
+MIX, descritta nel Volume 2, Capitolo 4, di <EM>The Art of Computer Programming</EM>,
+occupa una parola di memoria (o un registro dati) ed &egrave; la seguente:</P>
+<UL>
+<LI>il campo segno contiene il segno del numero rappresentato;</LI>
+<LI>il <EM>byte</EM> 1 contiene l'esponente in rappresentazione "eccesso 32":
+    significa che, posto <VAR>e</VAR> = contenuto del <EM>byte</EM> 1,
+    l'esponente &egrave; dato da <VAR>e</VAR> &minus; 32;</LI>
+<LI>la sottoparola (2:5) contiene la mantissa <VAR>f</VAR> che, per convenzione,
+    deve essere interpretata come parte frazionale di un numero &lt; 1; il
+    numero &egrave; <EM>normalizzato</EM> se, inoltre, <VAR>f</VAR> &gt;= 1/64.</LI>
+</UL>
+<P>Data una parola MIX <VAR>W</VAR>, il numero <VAR>x</VAR> da essa rappresentato
+secondo questa codifica si ottiene applicando la seguente equazione:</P>
+<BLOCKQUOTE>
+  <VAR>s</VAR> = <VAR>W</VAR>(0:0)<BR>
+  <VAR>e</VAR> = <VAR>W</VAR>(1:1)<BR>
+  <VAR>f</VAR> = <VAR>W</VAR>(2:5) / 64<SUP>4</SUP><BR>
+  <VAR>x</VAR> = <VAR>s</VAR> &#8901; <VAR>f</VAR>
+                              &#8901; 64<SUP><VAR>e</VAR> &minus; 32</SUP>.
+</BLOCKQUOTE>
+<P>Questo tipo di rappresentazione viene utilizzato dalle
+<A href="mixal.html#fp">istruzioni che operano su numeri in virgola mobile</A>,
+con mnemonici aventi <CODE>'F'</CODE> (da <EM>floating  point</EM>)
+come prima lettera.</P>
+
+</BODY>
+</HTML>

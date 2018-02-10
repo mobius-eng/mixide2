@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>NUM</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>NUM</H1>
+
+<!-- Breve descrizione -->
+<P>Interpreta il contenuto del registro <CODE>rAX</CODE> come
+una sequenza di simboli alfanumerici e lo converte in un
+valore numerico, che deposita nel registro <CODE>rA</CODE>.</P>
+
+<H2>Codice operativo: 05</H2>
+
+<P>N.B.: Il codice operativo <CODE>05</CODE> &egrave; condiviso con
+le istruzioni
+<A href="CHAR.html"><CODE>CHAR</CODE></A>,
+<A href="HLT.html"><CODE>HLT</CODE></A>,
+<A href="FLOT.html"><CODE>FLOT</CODE></A> e
+<A href="FIX.html"><CODE>FIX</CODE></A>.</P>
+
+<H2>Modificatore: 00</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>00</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>I dieci <em>byte</em> che compongono il registro esteso <CODE>rAX</CODE>
+vengono interpretati come una sequenza di caratteri alfanumerici; viene
+fatto il tentativo di interpretare tale sequenza come la rappresentazione
+in base 10 di un numero naturale, cio&egrave; senza segno. Il risultato di
+questo tentativo viene depositato nel registro <CODE>rA</CODE>.
+Se la sequenza non &egrave; interpretabile come un numero, o contiene
+caratteri incompatibili con la rappresentazione di un intero, il risultato
+&egrave; indefinito.</P>
+<P>In tutto questo, il segno di <CODE>rA</CODE> viene preservato.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rA</CODE> &#8592; Num(<CODE>rAX</CODE>) &#8901; sgn(<CODE>rAX</CODE>).
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="LDA.html"><CODE>LDA</CODE></A></STRONG></TD>
+    <TD><CODE>ARG1</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE><A href="LDX.html"><CODE>LDX</CODE></A></CODE></STRONG></TD>
+    <TD><CODE>ARG2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>NUM</CODE></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>ARG1</CODE></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>ARG2</CODE></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"&nbsp;&nbsp;&nbsp;10"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rA</CODE> = <CODE>+ 00 00 00 00 10</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="CHAR.html"><CODE>CHAR</CODE></A> e
+<A href="HLT.html"><CODE>HLT</CODE></A>.</P>
+
+</BODY>
+</HTML>

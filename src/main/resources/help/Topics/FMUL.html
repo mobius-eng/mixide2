@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>FMUL</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>FMUL</H1>
+
+<!-- Breve descrizione -->
+<P>Moltiplica il registro <CODE>rA</CODE> per l'operando in virgola mobile.</P>
+
+<H2>Codice operativo: 03</H2>
+
+<P>N.B.: Il codice operativo <CODE>01</CODE> &egrave; condiviso con
+l'istruzione <A href="MUL.html"><CODE>MUL</CODE></A>.</P>
+
+<H2>Modificatore: 06</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>06</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>L'operando <VAR>V</VAR> viene moltiplicato in virgola mobile per il contenuto del
+registro <CODE>rA</CODE> e il risultato viene depositato nel
+registro <CODE>rA</CODE> sostituendo il valore precedente.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rA</CODE> &#8592; <CODE>rA</CODE> &#8901; <VAR>V</VAR>.
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="LDA.html"><CODE>LDA</CODE></A></STRONG></TD>
+    <TD><CODE>ARG1</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>FMUL</CODE></STRONG></TD>
+    <TD><CODE>ARG2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>ARG1</CODE></TD>
+    <TD><STRONG><A href="CON-directive.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>33(0:1),01(2:2),0(3:5)</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>ARG2</CODE></TD>
+    <TD><STRONG><A href="CON-directive.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>32(0:1),02(2:2),0(3:5)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rA</CODE> = <CODE>+ 32 02 00 00 00</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="MUL.html"><CODE>MUL</CODE></A> e
+le altre  <A href="mixal.html#fp">istruzioni relative alla rappresentazione
+in virgola mobile</A>.</P>
+
+</BODY>
+</HTML>

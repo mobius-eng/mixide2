@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>DEC5</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>DEC5</H1>
+
+<!-- Breve descrizione -->
+<P>Decrementa il registro <CODE>rI5</CODE>.</P>
+
+<H2>Codice operativo: 53</H2>
+
+<P>N.B.: Il codice operativo <CODE>53</CODE> &egrave; condiviso con
+le istruzioni
+<A href="INC5.html"><CODE>INC5</CODE></A>,
+<A href="ENT5.html"><CODE>ENT5</CODE></A> e
+<A href="ENN5.html"><CODE>ENN5</CODE></A>.</P>
+
+<H2>Modificatore: 01</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>01</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>L'indirizzo dell'operando <VAR>M</VAR> viene sottratto al registro
+<CODE>rI5</CODE>; in altre parole, il registro <CODE>rI5</CODE> viene
+decrementato di <VAR>M</VAR>. Ovviamente, se <VAR>M</VAR> < 0, il
+registo <CODE>rI5</CODE> viene di fatto incrementato.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rI5</CODE> &#8592; <CODE>rI5</CODE> &minus; <VAR>M</VAR>.
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="LD5.html"><CODE>LD5</CODE></A></STRONG></TD>
+    <TD><CODE>ARG</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>DEC5</CODE></STRONG></TD>
+    <TD><CODE>1</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>ARG</CODE></TD>
+    <TD><STRONG><A href="CON-directive.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rI5</CODE> = <CODE>+ 00 00 00 00 01</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="INC5.html"><CODE>INC5</CODE></A>.</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>OUT</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>OUT</H1>
+
+<!-- Breve descrizione -->
+<P>Trasferisce un blocco di dati dalla memoria a un'unit&agrave; di ingresso/uscita.</P>
+
+<H2>Codice operativo: 37</H2>
+
+<H2>Modificatore</H2>
+
+<P>Il modificatore viene interpretato come il numero di un'unit&agrave;
+di ingresso/uscita; per <EM>default</EM> vale <CODE>00</CODE> e identifica,
+quindi, l'unit&agrave <CODE>u0</CODE>. Ovviamente hanno senso solo valori
+fino a <CODE>20</CODE>. Per valori superiori, l'esecuzione dell'istruzione
+provoca un errore ed arresta la macchina MIX.</P>
+
+<H2>Descrizione</H2>
+
+<P>Trasferisce un blocco di dati, che si trova in memoria a partire dall'indirizzo
+dell'operando <VAR>M</VAR>, all'unit&agrave; di ingresso/uscita indicata
+dal modificatore.</P>
+<P>La dimensione del blocco di dati dipende dal tipo di dispositivo
+di ingresso/uscita:</P>
+<UL>
+<LI>i nastri magnetici (unit&agrave; <CODE>u0</CODE> ... <CODE>u7</CODE> e
+    i dischi (unit&agrave; <CODE>u8</CODE> ... <CODE>u15</CODE>),
+    hanno una dimensione del blocco di dati di 100 parole;
+<LI>il lettore di schede perforate (unit&agrave; <CODE>u16</CODE>), ha una dimensione del blocco
+    di 16 parole, ovvero di 80 caratteri, che &egrave; anche la larghezza di una
+    linea;
+<LI>il perforatore di schede (unit&agrave; <CODE>u17</CODE>), ha una dimensione del blocco
+    di 16 parole, ovvero di 80 caratteri, che &egrave; anche la larghezza di una
+    linea;
+<LI>la stampante (unit&agrave; <CODE>u18</CODE>), ha una dimensione del blocco
+    di 24 parole, ovvero di 96 caratteri, che &egrave; anche la larghezza di una
+    linea;
+<LI>la telescrivente (unit&agrave; <CODE>u19</CODE>), in questa emulazione la
+    <A href="termview.html">finestra Terminale</A>, ha una dimensione del blocco di
+    14 parole, ovvero di 70 caratteri, che &egrave; anche la larghezza di una linea;
+<LI>la perforatrice di nastro cartaceo (unit&agrave; <CODE>u20</CODE>),
+    ha anch'essa una dimensione del blocco pari a 14 parole.
+</UL>
+<P>Si noti che trasferire i dati a un'unit&agrave; di solo ingresso, come per esempio
+il lettore di schede perforate, non genera un errore, ma non ha alcun effetto.</P>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD><CODE>TERM</CODE></TD>
+    <TD><STRONG><A href="EQU.html"><CODE>EQU</CODE></A></STRONG></TD>
+    <TD><CODE>19</CODE></TD>
+  </TR>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><CODE>OUT</CODE></STRONG></TD>
+    <TD><CODE>MSG(TERM)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>MSG</CODE></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"QUEST"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"O E' "</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"UN ME"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"SSAGG"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"IO CH"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"E OCC"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"UPA U"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"NA LI"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"NEA D"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"ELLA "</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"TELES"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"CRIVE"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"NTE. "</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"FINE."</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>scrive sulla telescrivente (cio&egrave; sulla finestra terminale)
+il messaggio immagazzinato in memoria all'indirizzo <CODE>MSG</CODE>,
+facendo comparire una linea con la scritta</P>
+<BLOCKQUOTE>
+<CODE>QUESTO E' UN MESSAGGIO CHE OCCUPA UNA LINEA DELLA TELESCRIVENTE. FINE.</CODE>
+</BLOCKQUOTE>
+
+<H2>Vedi anche</H2>
+
+<P><A href="IN.html"><CODE>IN</CODE></A>, <A href="IOC.html"><CODE>IOC</CODE></A>.</P>
+
+</BODY>
+</HTML>

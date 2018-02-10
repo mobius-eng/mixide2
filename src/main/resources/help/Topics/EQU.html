@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>EQU</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>EQU</H1>
+
+<!-- Breve descrizione -->
+<P>Assegna un valore numerico a un'etichetta simbolica.</P>
+
+<H2>Sintassi</H2>
+
+<BLOCKQUOTE>
+  &lt;etichetta&gt;&nbsp;&nbsp;
+  <STRONG><CODE>EQU</CODE></STRONG>&nbsp;&nbsp;
+  &lt;espressione&gt;
+</BLOCKQUOTE>
+
+<H2>Descrizione</H2>
+
+<P>Questa direttiva definisce l'etichetta simbolica specificata nella
+colonna di sinistra e le assegna il valore dell'espressione. Da questo
+momento in poi, quando comparir&agrave; in un'espressione, l'etichetta
+rappresenter&agrave; il valore che le &egrave; stato assegnato.</P>
+
+<H2>Esempio</H2>
+
+<P>La direttiva</P>
+
+<BLOCKQUOTE>
+  <CODE>STACK</CODE>&nbsp;&nbsp;
+  <STRONG><CODE>EQU</CODE></STRONG>&nbsp;&nbsp;
+  <CODE>3999</CODE>
+</BLOCKQUOTE>
+
+<P>definisce l'etichetta <CODE>STACK</CODE> e le assegna il
+valore numerico 3999. In seguito, la direttiva</P>
+
+<BLOCKQUOTE>
+  <CODE>UNDERFLOW</CODE>&nbsp;&nbsp;
+  <STRONG><CODE>EQU</CODE></STRONG>&nbsp;&nbsp;
+  <CODE>STACK+1</CODE>
+</BLOCKQUOTE>
+
+<P>definisce un'altra etichetta <CODE>UNDERFLOW</CODE> e le assegna il
+valore numerico 4000, ottenuto valutando l'espressione</P>
+<BLOCKQUOTE>
+  <CODE>STACK</CODE> + 1 = 3999 + 1 = 4000.
+</BLOCKQUOTE>
+
+</BODY>
+</HTML>

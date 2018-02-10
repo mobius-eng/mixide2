@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>J3N</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>J3N</H1>
+
+<!-- Breve descrizione -->
+<P>Salta se il registro <CODE>rI3</CODE> &egrave; negativo.</P>
+
+<H2>Codice operativo: 43</H2>
+
+<P>N.B.: Il codice operativo <CODE>43</CODE> &egrave; condiviso con
+le altre <A href="mixal.html#jumps">istruzioni di salto</A> con
+condizioni basate sul contenuto del registro <CODE>rI3</CODE>:
+<A href="J3NN.html"><CODE>J3NN</CODE></A>,
+<A href="J3NZ.html"><CODE>J3NZ</CODE></A>,
+<A href="J3NP.html"><CODE>J3NP</CODE></A>,
+<A href="J3P.html"><CODE>J3P</CODE></A> e
+<A href="J3Z.html"><CODE>J3Z</CODE></A>.
+</P>
+
+<H2>Modificatore: 00</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>00</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>La condizione di questa istruzione di salto &egrave; che il contenuto
+del registro <CODE>rI3</CODE> sia strettamente minore di zero.
+Se tale condizione &egrave; vera, l'indirizzo dell'istruzione successiva
+viene caricato nel registro di salto <CODE>rJ</CODE>, e l'esecuzione salta
+all'indirizzo dell'operando <VAR>M</VAR>.</P>
+
+<P>In simboli: se <CODE>rI3</CODE> &lt; 0,</P>
+<BLOCKQUOTE>
+  <CODE>rJ</CODE> &#8592; <VAR>P</VAR>,<BR>
+  <VAR>P</VAR> &#8592; <VAR>M</VAR>,
+</BLOCKQUOTE>
+dove <VAR>P</VAR> rappresenta l'indirizzo della prossima istruzione che
+deve essere eseguita.
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD><CODE>TABELLA</CODE></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>1</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>3</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>4</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>5</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>6</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>7</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>8</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>9</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>10</CODE></TD>
+  </TR>
+  <TR>
+    <TD width=80><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="ENN3.html"><CODE>ENN3</CODE></A></STRONG></TD>
+    <TD><CODE>10</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ENTA.html"><CODE>ENTA</CODE></A></STRONG></TD>
+    <TD><CODE>0</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>SOMMA</CODE></TD>
+    <TD><STRONG><A href="SUM.html"><CODE>SUM</CODE></A></STRONG></TD>
+    <TD><CODE>TABELLA+10,3</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="INC3.html"><CODE>INC3</CODE></A></STRONG></TD>
+    <TD><CODE>1</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>J3N</CODE></STRONG></TD>
+    <TD><CODE>SOMMA</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>somma i 10 elementi della tabella e termina con <CODE>rA</CODE> = 55.</P>
+
+<H2>Vedi anche</H2>
+
+<P>Le altre <A href="mixal.html#jumps">istruzioni di salto</A>.</P>
+
+</BODY>
+</HTML>

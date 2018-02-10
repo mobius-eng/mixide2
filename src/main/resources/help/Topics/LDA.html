@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>LDA</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>LDA</H1>
+
+<!-- Breve descrizione -->
+<P>Carica l'operando nel registro <CODE>rA</CODE>.</P>
+
+<H2>Codice operativo: 08</H2>
+
+<H2>Modificatore</H2>
+
+<P>Il modificatore viene interpretato come specifica di campo
+dell'operando; per <EM>default</EM> vale <CODE>05</CODE> e specifica
+dunque la parola intera (0:5).</P>
+
+<H2>Descrizione</H2>
+
+<P>L'operando <VAR>V</VAR> viene caricato nel registro <CODE>rA</CODE>
+sostituendo il valore precedente.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rA</CODE> &#8592; <VAR>V</VAR>.
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><CODE>LDA</CODE></STRONG></TD>
+    <TD><CODE>ARG</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>ARG</CODE></TD>
+    <TD><STRONG><A href="CON-directive.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rA</CODE> = <CODE>+ 00 00 00 00 02</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="LDAN.html"><CODE>LDAN</CODE></A>.</P>
+
+</BODY>
+</HTML>

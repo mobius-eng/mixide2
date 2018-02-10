@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>LD5N</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>LD5N</H1>
+
+<!-- Breve descrizione -->
+<P>Carica l'operando cambiato di segno nel registro <CODE>rI5</CODE>.</P>
+
+<H2>Codice operativo: 21</H2>
+
+<H2>Modificatore</H2>
+
+<P>Il modificatore viene interpretato come specifica di campo
+dell'operando; per <EM>default</EM> vale <CODE>05</CODE> e specifica
+dunque la parola intera (0:5).</P>
+
+<H2>Descrizione</H2>
+
+<P>L'operando <VAR>V</VAR>, cambiato di segno, viene caricato nel registro
+<CODE>rI5</CODE> sostituendo il valore precedente. Si noti che un registro indice ha solo
+due <EM>byte</EM>, mentre la specifica di campo di <EM>default</EM> per
+questo operando &egrave; (0:5). In tal caso, il registro indice potr&agrave;
+contenere solo i due <EM>byte</EM> meno significativi e il segno.
+Se l'operando &egrave; maggiore della capienza del registro indice,
+l'indicatore <CODE>OV</CODE> verr&agrave; acceso.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rI5</CODE> &#8592; &minus;<VAR>V</VAR>,<BR>
+  <CODE>OV</CODE> &#8592; (|<VAR>V</VAR>| &gt; 4095).
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><CODE>LD5N</CODE></STRONG></TD>
+    <TD><CODE>ARG</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>ARG</CODE></TD>
+    <TD><STRONG><A href="CON-directive.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rI5</CODE> = <CODE>- 00 02</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="LD5.html"><CODE>LD5</CODE></A>.</P>
+
+</BODY>
+</HTML>

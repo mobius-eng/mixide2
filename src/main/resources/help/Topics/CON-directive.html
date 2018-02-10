@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>CON</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>CON</H1>
+
+<!-- Breve descrizione -->
+<P>Inserisce nella prossima cella di memoria un valore numerico.</P>
+
+<H2>Sintassi</H2>
+
+<BLOCKQUOTE>
+  <STRONG><CODE>CON</CODE></STRONG>&nbsp;&nbsp;&lt;espressione&gt;<BR>
+  <STRONG><CODE>CON</CODE></STRONG>&nbsp;&nbsp;&lt;espressione&gt;<CODE>(</CODE><VAR>s</VAR><CODE>:</CODE><VAR>d</VAR><CODE>)</CODE><BR>
+  <STRONG><CODE>CON</CODE></STRONG>&nbsp;&nbsp;&lt;espressione<SUB>1</SUB>&gt;<CODE>(</CODE><VAR>s</VAR><SUB>1</SUB><CODE>:</CODE><VAR>d</VAR><SUB>1</SUB><CODE>),</CODE>
+    ... <CODE>,</CODE>&lt;espressione<SUB><I>n</I></SUB>&gt;<CODE>(</CODE><VAR>s</VAR><SUB><I>n</I></SUB><CODE>:</CODE><VAR>d</VAR><SUB><I>n</I></SUB><CODE>)</CODE>
+</BLOCKQUOTE>
+
+<H2>Descrizione</H2>
+
+<P>Questa direttiva assembla all'indirizzo corrente (<CODE>*</CODE>)
+una parola il cui valore &egrave; dato dall'argomento.
+Nel primo caso, in cui non &egrave; inclusa esplicitamente una specifica
+di campo, il valore dell'intera parola &egrave; dato dal valore
+dell'espressione; quando invece la specifica di campo &egrave; data,
+il valore di ciascuna espressione viene assegnato solo alla parte di
+parola identificata dalla specifica di campo corrispondente.</P>
+
+<H2>Esempi</H2>
+
+<P>La direttiva</P>
+
+<BLOCKQUOTE>
+  <STRONG><CODE>CON</CODE></STRONG>&nbsp;&nbsp;
+  <CODE>1000</CODE>
+</BLOCKQUOTE>
+
+<P>assembla in memoria, all'indirizzo corrente, la parola</P>
+
+<BLOCKQUOTE>
+  <CODE>+ 00 00 00 15 40</CODE>
+</BLOCKQUOTE>
+
+<P>Invece, la direttiva</P>
+
+<BLOCKQUOTE>
+  <STRONG><CODE>CON</CODE></STRONG>&nbsp;&nbsp;
+  <CODE>1000(0:2),10(4:4)</CODE>
+</BLOCKQUOTE>
+
+<P>assembla in memoria, all'indirizzo corrente, la parola</P>
+
+<BLOCKQUOTE>
+  <CODE>+ 15 40 00 10 00</CODE>
+</BLOCKQUOTE>
+
+<H2>Vedi anche</H2>
+
+<P>La direttiva <A href="ALF.html"><CODE>ALF</CODE></A>.</P>
+
+</BODY>
+</HTML>

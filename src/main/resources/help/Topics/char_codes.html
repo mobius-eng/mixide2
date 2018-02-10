@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>Codifica dei caratteri</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>Codifica dei caratteri</H1>
+
+<P>La macchina MIX utilizza una codifica dei caratteri
+alfanumerici progettata in modo che ciascun <EM>byte</EM>
+di una parola di memoria o di un registro possa contenere
+un simbolo alfanumerico.</P>
+
+<P>La seguente tabella riporta la codifica dei caratteri
+utilizzata dalla macchina MIX.</P>
+
+<TABLE border=1 cellpadding=5>
+  <TR><TD>00 &nbsp;</TD><TD>01 <CODE>A</CODE></TD><TD>02 <CODE>B</CODE></TD><TD>03 <CODE>C</CODE>
+      <TD>04 <CODE>D</CODE></TD><TD>05 <CODE>E</CODE></TD><TD>06 <CODE>F</CODE></TD><TD>07 <CODE>G</CODE></TR>
+  <TR><TD>08 <CODE>H</CODE></TD><TD>09 <CODE>I</CODE></TD><TD>10 <CODE>&#916;</CODE> </TD><TD>11 <CODE>J</CODE>
+      <TD>12 <CODE>K</CODE></TD><TD>13 <CODE>L</CODE></TD><TD>14 <CODE>M</CODE></TD><TD>15 <CODE>N</CODE></TR>
+  <TR><TD>16 <CODE>O</CODE></TD><TD>17 <CODE>P</CODE></TD><TD>18 <CODE>Q</CODE></TD><TD>19 <CODE>R</CODE>
+      <TD>20 <CODE>&#931;</CODE></TD><TD>21 <CODE>&#928;</CODE></TD><TD>22 <CODE>S</CODE></TD><TD>23 <CODE>T</CODE></TR>
+  <TR><TD>24 <CODE>U</CODE></TD><TD>25 <CODE>V</CODE></TD><TD>26 <CODE>W</CODE></TD><TD>27 <CODE>X</CODE>
+      <TD>28 <CODE>Y</CODE></TD><TD>29 <CODE>Z</CODE></TD><TD>30 <CODE>0</CODE></TD><TD>31 <CODE>1</CODE></TR>
+  <TR><TD>32 <CODE>2</CODE></TD><TD>33 <CODE>3</CODE></TD><TD>34 <CODE>4</CODE></TD><TD>35 <CODE>5</CODE>
+      <TD>36 <CODE>6</CODE></TD><TD>37 <CODE>7</CODE></TD><TD>38 <CODE>8</CODE></TD><TD>39 <CODE>9</CODE></TR>
+  <TR><TD>40 <CODE>.</CODE></TD><TD>41 <CODE>,</CODE></TD><TD>42 <CODE>(</CODE></TD><TD>43 <CODE>)</CODE>
+      <TD>44 <CODE>+</CODE></TD><TD>45 <CODE>-</CODE></TD><TD>46 <CODE>*</CODE></TD><TD>47 <CODE>/</CODE></TR>
+  <TR><TD>48 <CODE>=</CODE></TD><TD>49 <CODE>$</CODE></TD><TD>50 <CODE>&lt;</CODE></TD><TD>51 <CODE>&gt;</CODE>
+      <TD>52 <CODE>@</CODE></TD><TD>53 <CODE>;</CODE></TD><TD>54 <CODE>:</CODE></TD><TD>55 <CODE>'</CODE></TR>
+  <TR bgcolor="yellow"><TD>56 <CODE>!</CODE></TD><TD>57 <CODE>?</CODE></TD><TD>58 <CODE>#</CODE></TD><TD>59 <CODE>%</CODE>
+      <TD>60 <CODE>\</CODE></TD><TD>61 <CODE>|</CODE></TD><TD>62 <CODE>"</CODE></TD><TD>63 <CODE>~</CODE></TR>
+</TABLE>
+
+<P><STRONG>N.B.:</STRONG> la codifica dei caratteri dell'ultima
+riga (codici da 56 a 63) non &egrave; standard,
+ma &egrave; specifica a questa implementazione della macchina
+MIX.
+La codifica di Knuth non specificava i caratteri corrispondenti
+a quelle posizioni.</P>
+
+</BODY>
+</HTML>

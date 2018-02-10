@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>JRED</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>JRED</H1>
+
+<!-- Breve descrizione -->
+<P>Salta se un'unit&agrave; di ingresso/uscita &egrave; pronta.</P>
+
+<H2>Codice operativo: 38</H2>
+
+<H2>Modificatore</H2>
+
+<P>Il modificatore viene interpretato come il numero di un'unit&agrave;
+di ingresso/uscita; per <EM>default</EM> vale <CODE>00</CODE> e identifica,
+quindi, l'unit&agrave <CODE>u0</CODE>. Ovviamente hanno senso solo valori
+fino a <CODE>20</CODE>. Per valori superiori, l'esecuzione dell'istruzione
+provoca un errore ed arresta la macchina MIX.</P>
+
+<H2>Descrizione</H2>
+
+<P>La condizione di questa istruzione di salto &egrave; che l'unit&agrave;
+di ingresso/uscita identificata dal modificatore sia pronta.
+Se tale condizione &egrave; vera, l'indirizzo dell'istruzione successiva
+viene caricato nel registro di salto <CODE>rJ</CODE>, e l'esecuzione salta
+all'indirizzo dell'operando <VAR>M</VAR>. Altrimenti, l'esecuzione
+prosegue normalmente.</P>
+
+<P>In simboli: se la condizione &egrave; verificata,</P>
+<BLOCKQUOTE>
+  <CODE>rJ</CODE> &#8592; <VAR>P</VAR>,<BR>
+  <VAR>P</VAR> &#8592; <VAR>M</VAR>,
+</BLOCKQUOTE>
+dove <VAR>P</VAR> rappresenta l'indirizzo della prossima istruzione che
+deve essere eseguita.
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD><CODE>DISCO</CODE></TD>
+    <TD><STRONG><A href="EQU.html"><CODE>EQU</CODE></A></STRONG></TD>
+    <TD><CODE>8</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>INIZIO</CODE></TD>
+    <TD><STRONG><A href="ENT1.html"><CODE>ENT1</CODE></A></STRONG></TD>
+    <TD>0</TD>
+  </TR>
+  <TR>
+    <TD width=60><CODE>LEGGI</CODE></TD>
+    <TD width=40><STRONG><A href="IN.html"><CODE>IN</CODE></A></STRONG></TD>
+    <TD><CODE>BUFFER,1(DISCO)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="INC1.html"><CODE>INC1</CODE></A></A></STRONG></TD>
+    <TD><CODE>100</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>JRED</CODE></A></STRONG></TD>
+    <TD><CODE>LEGGI(DISCO)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>BUFFER</CODE></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>legge quanti pi&ugrave; blocchi di dati dall'unit&agrave; <CODE>u8</CODE>
+sia possibile prima che risulti occupata, scrivendoli in memoria a partire
+dall'indirizzo <CODE>BUFFER</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="JBUS.html"><CODE>JBUS</CODE></A>.</P>
+
+</BODY>
+</HTML>

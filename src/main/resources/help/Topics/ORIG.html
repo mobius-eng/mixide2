@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>ORIG</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>ORIG</H1>
+
+<!-- Breve descrizione -->
+<P>Imposta l'indirizzo della prossima cella di memoria.</P>
+
+<H2>Sintassi</H2>
+
+<BLOCKQUOTE>
+  <STRONG><CODE>ORIG</CODE></STRONG>&nbsp;&nbsp;&lt;espressione&gt;
+</BLOCKQUOTE>
+
+<H2>Descrizione</H2>
+
+<P>Questa direttiva modifica l'indirizzo corrente (<CODE>*</CODE>)
+assegnandogli il valore dell'espressione specificata. In altre
+parole, fa "saltare" l'assemblatore all'indirizzo di memoria
+specificato per proseguire da l&igrave; l'assemblaggio del
+programma.</P>
+
+<H2>Esempio</H2>
+
+<P>Le due direttive</P>
+
+<BLOCKQUOTE>
+  <STRONG><CODE>ORIG</CODE></STRONG>&nbsp;&nbsp;<CODE>1000</CODE><BR>
+  <STRONG><CODE><A href="CON-directive.html">CON</A> </CODE></STRONG>&nbsp;&nbsp;<CODE>1</CODE>
+</BLOCKQUOTE>
+
+<P>fanno s&igrave; che nella cella di memoria situata all'indirizzo
+<CODE>1000</CODE> venga inserita la parola</P>
+
+<BLOCKQUOTE>
+<CODE>+ 00 00 00 00 01</CODE>.
+</BLOCKQUOTE>
+
+</BODY>
+</HTML>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>STJ</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>STJ</H1>
+
+<!-- Breve descrizione -->
+<P>Scrive il contenuto del registro <CODE>rJ</CODE> nell'operando.</P>
+
+<H2>Codice operativo: 32</H2>
+
+<H2>Modificatore</H2>
+
+<P>Il modificatore viene interpretato come specifica di campo
+dell'operando; per <EM>default</EM> vale <CODE>02</CODE> e specifica
+dunque il campo (0:2) di una parola di memoria, che coincide con il campo
+indirizzo di un'istruzione.</P>
+
+<H2>Descrizione</H2>
+
+<P>Il contenuto del registro di salto <CODE>rJ</CODE> viene scritto nell'operando
+<VAR>V</VAR> sostituendo il valore precedente. Tipicamente viene usato per
+modificare un'istruzione di salto in modo che faccia saltare il programma
+alla cella di memoria contenuta nell'indirizzo di salto, ovvero all'istruzione
+successiva all'ultima istruzione di salto eseguita.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <VAR>V</VAR> &#8592; <CODE>rJ</CODE>.
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="ENTA.html"><CODE>ENTA</CODE></A></STRONG></TD>
+    <TD><CODE>0</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="JMP.html"><CODE>JMP</CODE></A></STRONG></TD>
+    <TD><CODE>SPROG</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ENTA.html"><CODE>ENTA</CODE></A></STRONG></TD>
+    <TD><CODE>1</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>FINE</CODE></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>SPROG</CODE></TD>
+    <TD><STRONG><CODE>STJ</CODE></STRONG></TD>
+    <TD><CODE>RITORNO</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>RITORNO</CODE></TD>
+    <TD><STRONG><A href="JMP"><CODE>JMP</CODE></A></STRONG></TD>
+    <TD><CODE>FINE</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rA</CODE> = <CODE>+ 00 00 00 00 01</CODE>, perch&eacute;
+l'esecuzione dell'istruzione <CODE>STJ</CODE> modifica l'indirizzo dell'istruzione
+<A href="JMP"><CODE>JMP</CODE></A> all'indirizzo <CODE>RITORNO</CODE>,
+facendo s&igrave; che il programma salti alla cella <CODE>INIZIO</CODE> + 2,
+dove viene eseguita l'istruzione <CODE><A href="ENTA.html">ENTA</A> 1</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P>Le <A href="mixal.html#jumps">istruzioni di salto</A>.</P>
+
+</BODY>
+</HTML>

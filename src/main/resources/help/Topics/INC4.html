@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>INC4</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>INC4</H1>
+
+<!-- Breve descrizione -->
+<P>Incrementa il registro <CODE>rI4</CODE>.</P>
+
+<H2>Codice operativo: 52</H2>
+
+<P>N.B.: Il codice operativo <CODE>52</CODE> &egrave; condiviso con
+le istruzioni
+<A href="DEC4.html"><CODE>DEC4</CODE></A>,
+<A href="ENT4.html"><CODE>ENT4</CODE></A> e
+<A href="ENN4.html"><CODE>ENN4</CODE></A>.</P>
+
+<H2>Modificatore: 00</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>00</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>L'indirizzo dell'operando <VAR>M</VAR> viene sommato al registro
+<CODE>rI4</CODE>; in altre parole, il registro <CODE>rI4</CODE> viene
+incrementato di <VAR>M</VAR>. Ovviamente, se <VAR>M</VAR> < 0, il
+registo <CODE>rI4</CODE> viene di fatto decrementato.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rI4</CODE> &#8592; <CODE>rI4</CODE> + <VAR>M</VAR>.
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="LD4.html"><CODE>LD4</CODE></A></STRONG></TD>
+    <TD><CODE>ARG</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>INC4</CODE></STRONG></TD>
+    <TD><CODE>1</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>ARG</CODE></TD>
+    <TD><STRONG><A href="CON-directive.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rI4</CODE> = <CODE>+ 00 00 00 00 03</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="DEC4.html"><CODE>DEC4</CODE></A>.</P>
+
+</BODY>
+</HTML>

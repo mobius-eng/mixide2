@@ -1,0 +1,449 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>MIXAL</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>MIXAL</H1>
+
+<H2>Introduzione</H2>
+
+MIXAL &egrave; il linguaggio <EM>assembly</EM> della
+macchina MIX, descritto nel primo volume dell'opera di
+Knuth <EM>The Art of Computer Programming</EM>.
+
+La sintassi del linguaggio &egrave; descritta nelle
+dispense del corso. Qui di seguito &egrave; fornita
+una documentazione di riferimento del significato
+di ciascuno degli mnemonici riconosciuti dall'assemblatore.
+
+<H2>Direttive</H2>
+
+<DL compact>
+<DT><A href="ALF.html"><CODE>ALF</CODE></A></DT>
+<DD>Inserisce nella prossima cella di memoria dei caratteri alfanumerici.</DD>
+<DT><A href="CON-directive.html"><CODE>CON</CODE></A></DT>
+<DD>Inserisce nella prossima cella di memoria un valore numerico.</DD>
+<DT><A href="EQU.html"><CODE>EQU</CODE></A></DT>
+<DD>Assegna un valore numerico a un'etichetta simbolica.</DD>
+<DT><A href="END.html"><CODE>END</CODE></A></DT>
+<DD>Segnala la fine del programma e assegna l'indirizzo della prima istruzione.</DD>
+<DT><A href="ORIG.html"><CODE>ORIG</CODE></A></DT>
+<DD>Imposta l'indirizzo della prossima cella di memoria.</DD>
+</DL>
+
+<H2>Istruzioni</H2>
+
+<H3>Formato delle istruzioni</H3>
+
+<P>Nel linguaggio MIXAL, le istruzioni hanno la sintassi generale</P>
+<BLOCKQUOTE>
+  &lt;operazione&gt;&nbsp;&nbsp;&lt;indirizzo&gt;<CODE>,</CODE>&lt;indice&gt;<CODE>(</CODE>&lt;modificatore&gt;<CODE>)</CODE>
+</BLOCKQUOTE>
+<P>dove</P>
+<UL>
+<LI>&lt;operazione&gt &egrave; uno degli mnemonici elencati nel
+    prossimo paragrafo;</LI>
+<LI>&lt;indirizzo&gt; &egrave; un'espressione numerica con segno,
+    il cui valore &egrave; un intero compreso tra -4095 e +4095;</LI>
+<LI>&lt;indice&gt; &egrave; un'espressione numerica il cui valore &egrave;
+    un numero naturale compreso tra 0 e 6;</LI>
+<LI>&lt;modificatore&gt; &egrave; un'espressione numerica il cui valore &egrave;
+    un numero naturale compreso tra 0 e 63, che pu&ograve; essere espressa
+    nella forma <CODE>(<VAR>s</VAR>:<VAR>d</VAR>)</CODE> (che corrisponde
+    al valore 8<VAR>s</VAR> + <VAR>d</VAR>), chiamata <EM>specifica di campo</EM>.</LI>
+</UL>
+<P>Sar&agrave; utile definire l'<EM>indirizzo dell'operando</EM> <VAR>M</VAR>
+e l'<EM>operando</EM> <VAR>V</VAR> come segue:</P>
+<UL>
+<LI><VAR>M</VAR> = &lt;indirizzo&gt; + <CODE>rI</CODE>&lt;indice&gt;,
+    cio&egrave; l'indirizzo sommato al valore del registro indice specificato
+    nell'istruzione (o solo l'indirizzo se l'indice &egrave; zero o manca);</LI>
+<LI><VAR>V</VAR> = quella parte della parola di memoria
+    all'indirizzo <VAR>M</VAR> che inizia dal campo <VAR>s</VAR> = &lt;modificatore&gt;/8
+    e finisce al campo <VAR>d</VAR> = &lt;modificatore&gt; (mod 8):
+    si ricorda che il campo 0 &egrave; il segno della
+    parola, mentre i campi da 1 a 5 sono i cinque <EM>byte</EM> della parola.</LI>
+</UL>
+
+<H3>Operazioni</H3>
+
+<DL compact>
+<DT><A href="ADD.html"><CODE>ADD</CODE></A></DT>
+<DD>Somma l'operando al registro <CODE>rA</CODE>.</DD>
+<DT><A href="CHAR.html"><CODE>CHAR</CODE></A></DT>
+<DD>Converte il valore del registro <CODE>rA</CODE> nella
+    sua rappresentazione decimale e la lascia nel
+    registro <CODE>rAX</CODE>.</DD>
+<DT><A href="CMP1.html"><CODE>CMP1</CODE></A></DT>
+<DD>Confronta il registro <CODE>rI1</CODE> con l'operando.</DD>
+<DT><A href="CMP2.html"><CODE>CMP2</CODE></A></DT>
+<DD>Confronta il registro <CODE>rI2</CODE> con l'operando.</DD>
+<DT><A href="CMP3.html"><CODE>CMP3</CODE></A></DT>
+<DD>Confronta il registro <CODE>rI3</CODE> con l'operando.</DD>
+<DT><A href="CMP4.html"><CODE>CMP4</CODE></A></DT>
+<DD>Confronta il registro <CODE>rI4</CODE> con l'operando.</DD>
+<DT><A href="CMP5.html"><CODE>CMP5</CODE></A></DT>
+<DD>Confronta il registro <CODE>rI5</CODE> con l'operando.</DD>
+<DT><A href="CMP6.html"><CODE>CMP6</CODE></A></DT>
+<DD>Confronta il registro <CODE>rI6</CODE> con l'operando.</DD>
+<DT><A href="CMPA.html"><CODE>CMPA</CODE></A></DT>
+<DD>Confronta il registro <CODE>rA</CODE> con l'operando.</DD>
+<DT><A href="CMPX.html"><CODE>CMPX</CODE></A></DT>
+<DD>Confronta il registro <CODE>rX</CODE> con l'operando.</DD>
+<DT><A href="DEC1.html"><CODE>DEC1</CODE></A></DT>
+<DD>Decrementa il registro <CODE>rI1</CODE>.</DD>
+<DT><A href="DEC2.html"><CODE>DEC2</CODE></A></DT>
+<DD>Decrementa il registro <CODE>rI2</CODE>.</DD>
+<DT><A href="DEC3.html"><CODE>DEC3</CODE></A></DT>
+<DD>Decrementa il registro <CODE>rI3</CODE>.</DD>
+<DT><A href="DEC4.html"><CODE>DEC4</CODE></A></DT>
+<DD>Decrementa il registro <CODE>rI4</CODE>.</DD>
+<DT><A href="DEC5.html"><CODE>DEC5</CODE></A></DT>
+<DD>Decrementa il registro <CODE>rI5</CODE>.</DD>
+<DT><A href="DEC6.html"><CODE>DEC6</CODE></A></DT>
+<DD>Decrementa il registro <CODE>rI6</CODE>.</DD>
+<DT><A href="DECA.html"><CODE>DECA</CODE></A></DT>
+<DD>Decrementa il registro <CODE>rA</CODE>.</DD>
+<DT><A href="DECX.html"><CODE>DECX</CODE></A></DT>
+<DD>Decrementa il registro <CODE>rX</CODE>.</DD>
+<DT><A href="DIV.html"><CODE>DIV</CODE></A></DT>
+<DD>Esegue la divisione intera tra il registro <CODE>rAX</CODE>
+    e l'operando; lascia il quoziente nel registro <CODE>rA</CODE>
+    e il resto nel registro <CODE>rX</CODE>.</DD>
+<DT><A href="ENN1.html"><CODE>ENN1</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando cambiato di segno nel registro <CODE>rI1</CODE>.</DD>
+<DT><A href="ENN2.html"><CODE>ENN2</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando cambiato di segno nel registro <CODE>rI2</CODE>.</DD>
+<DT><A href="ENN3.html"><CODE>ENN3</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando cambiato di segno nel registro <CODE>rI3</CODE>.</DD>
+<DT><A href="ENN4.html"><CODE>ENN4</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando cambiato di segno nel registro <CODE>rI4</CODE>.</DD>
+<DT><A href="ENN5.html"><CODE>ENN5</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando cambiato di segno nel registro <CODE>rI5</CODE>.</DD>
+<DT><A href="ENN6.html"><CODE>ENN6</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando cambiato di segno nel registro <CODE>rI6</CODE>.</DD>
+<DT><A href="ENNA.html"><CODE>ENNA</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando cambiato di segno nel registro <CODE>rA</CODE>.</DD>
+<DT><A href="ENNX.html"><CODE>ENNX</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando cambiato di segno nel registro <CODE>rX</CODE>.</DD>
+<DT><A href="ENT1.html"><CODE>ENT1</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando nel registro <CODE>rI1</CODE>.</DD>
+<DT><A href="ENT2.html"><CODE>ENT2</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando nel registro <CODE>rI2</CODE>.</DD>
+<DT><A href="ENT3.html"><CODE>ENT3</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando nel registro <CODE>rI3</CODE>.</DD>
+<DT><A href="ENT4.html"><CODE>ENT4</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando nel registro <CODE>rI4</CODE>.</DD>
+<DT><A href="ENT5.html"><CODE>ENT5</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando nel registro <CODE>rI5</CODE>.</DD>
+<DT><A href="ENT6.html"><CODE>ENT6</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando nel registro <CODE>rI6</CODE>.</DD>
+<DT><A href="ENTA.html"><CODE>ENTA</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando nel registro <CODE>rA</CODE>.</DD>
+<DT><A href="ENTX.html"><CODE>ENTX</CODE></A></DT>
+<DD>Inserisce l'indirizzo dell'operando nel registro <CODE>rX</CODE>.</DD>
+<DT><A name="fp"><A href="FADD.html"><CODE>FADD</CODE></A></DT>
+<DD>Somma l'operando al registro <CODE>rA</CODE> in virgola mobile.</DD>
+<DT><A href="FCMP.html"><CODE>FCMP</CODE></A></DT>
+<DD>Confronta il registro <CODE>rA</CODE> con l'operando in virgola mobile.</DD>
+<DT><A href="FDIV.html"><CODE>FDIV</CODE></A></DT>
+<DD>Divide il registro <CODE>rA</CODE> per l'operando in virgola mobile.</DD>
+<DT><A href="FIX.html"><CODE>FIX</CODE></A></DT>
+<DD>Converte il registro <CODE>rA</CODE> da virgola mobile in intero.</DD>
+<DT><A href="FLOT.html"><CODE>FLOT</CODE></A></DT>
+<DD>Converte il registro <CODE>rA</CODE> da intero in virgola mobile.</DD>
+<DT><A href="FMUL.html"><CODE>FMUL</CODE></A></DT>
+<DD>Moltiplica il registro <CODE>rA</CODE> per l'operando in virgola mobile.</DD>
+<DT><A href="FSUB.html"><CODE>FSUB</CODE></A></DT>
+<DD>Sottrae l'operando al registro <CODE>rA</CODE> in virgola mobile.</DD>
+<DT><A href="HLT.html"><CODE>HLT</CODE></A></DT>
+<DD>Arresta l'esecuzione del programma.</DD>
+<DT><A href="IN.html"><CODE>IN</CODE></A></DT>
+<DD>Trasferisce un blocco di dati da un'unit&agrave; di ingresso/uscita in memoria.</DD>
+<DT><A href="INC1.html"><CODE>INC1</CODE></A></DT>
+<DD>Incrementa il registro <CODE>rI1</CODE>.</DD>
+<DT><A href="INC2.html"><CODE>INC2</CODE></A></DT>
+<DD>Incrementa il registro <CODE>rI2</CODE>.</DD>
+<DT><A href="INC3.html"><CODE>INC3</CODE></A></DT>
+<DD>Incrementa il registro <CODE>rI3</CODE>.</DD>
+<DT><A href="INC4.html"><CODE>INC4</CODE></A></DT>
+<DD>Incrementa il registro <CODE>rI4</CODE>.</DD>
+<DT><A href="INC5.html"><CODE>INC5</CODE></A></DT>
+<DD>Incrementa il registro <CODE>rI5</CODE>.</DD>
+<DT><A href="INC6.html"><CODE>INC6</CODE></A></DT>
+<DD>Incrementa il registro <CODE>rI6</CODE>.</DD>
+<DT><A href="INCA.html"><CODE>INCA</CODE></A></DT>
+<DD>Incrementa il registro <CODE>rA</CODE>.</DD>
+<DT><A href="INCX.html"><CODE>INCX</CODE></A></DT>
+<DD>Incrementa il registro <CODE>rX</CODE>.</DD>
+<DT><A href="IOC.html"><CODE>IOC</CODE></A></DT>
+<DD>Esegue un'operazione di controllo su un'unit&agrave; di ingresso/uscita.</DD>
+<DT><A name="jumps"></A><A href="J1N.html"><CODE>J1N</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI1</CODE> &egrave; negativo.</DD>
+<DT><A href="J1NN.html"><CODE>J1NN</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI1</CODE> &egrave; non negativo.</DD>
+<DT><A href="J1NP.html"><CODE>J1NP</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI1</CODE> &egrave; non positivo.</DD>
+<DT><A href="J1NZ.html"><CODE>J1NZ</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI1</CODE> &egrave; diverso da zero.</DD>
+<DT><A href="J1P.html"><CODE>J1P</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI1</CODE> &egrave; positivo.</DD>
+<DT><A href="J1Z.html"><CODE>J1Z</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI1</CODE> &egrave; uguale a zero.</DD>
+<DT><A href="J2N.html"><CODE>J2N</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI2</CODE> &egrave; negativo.</DD>
+<DT><A href="J2NN.html"><CODE>J2NN</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI2</CODE> &egrave; non negativo.</DD>
+<DT><A href="J2NP.html"><CODE>J2NP</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI2</CODE> &egrave; non positivo.</DD>
+<DT><A href="J2NZ.html"><CODE>J2NZ</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI2</CODE> &egrave; diverso da zero.</DD>
+<DT><A href="J2P.html"><CODE>J2P</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI2</CODE> &egrave; positivo.</DD>
+<DT><A href="J2Z.html"><CODE>J2Z</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI2</CODE> &egrave; uguale a zero.</DD>
+<DT><A href="J3N.html"><CODE>J3N</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI3</CODE> &egrave; negativo.</DD>
+<DT><A href="J3NN.html"><CODE>J3NN</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI3</CODE> &egrave; non negativo.</DD>
+<DT><A href="J3NP.html"><CODE>J3NP</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI3</CODE> &egrave; non positivo.</DD>
+<DT><A href="J3NZ.html"><CODE>J3NZ</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI3</CODE> &egrave; diverso da zero.</DD>
+<DT><A href="J3P.html"><CODE>J3P</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI3</CODE> &egrave; positivo.</DD>
+<DT><A href="J3Z.html"><CODE>J3Z</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI3</CODE> &egrave; uguale a zero.</DD>
+<DT><A href="J4N.html"><CODE>J4N</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI4</CODE> &egrave; negativo.</DD>
+<DT><A href="J4NN.html"><CODE>J4NN</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI4</CODE> &egrave; non negativo.</DD>
+<DT><A href="J4NP.html"><CODE>J4NP</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI4</CODE> &egrave; non positivo.</DD>
+<DT><A href="J4NZ.html"><CODE>J4NZ</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI4</CODE> &egrave; diverso da zero.</DD>
+<DT><A href="J4P.html"><CODE>J4P</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI4</CODE> &egrave; positivo.</DD>
+<DT><A href="J4Z.html"><CODE>J4Z</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI4</CODE> &egrave; uguale a zero.</DD>
+<DT><A href="J5N.html"><CODE>J5N</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI5</CODE> &egrave; negativo.</DD>
+<DT><A href="J5NN.html"><CODE>J5NN</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI5</CODE> &egrave; non negativo.</DD>
+<DT><A href="J5NP.html"><CODE>J5NP</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI5</CODE> &egrave; non positivo.</DD>
+<DT><A href="J5NZ.html"><CODE>J5NZ</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI5</CODE> &egrave; diverso da zero.</DD>
+<DT><A href="J5P.html"><CODE>J5P</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI5</CODE> &egrave; positivo.</DD>
+<DT><A href="J5Z.html"><CODE>J5Z</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI5</CODE> &egrave; uguale a zero.</DD>
+<DT><A href="J6N.html"><CODE>J6N</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI6</CODE> &egrave; negativo.</DD>
+<DT><A href="J6NN.html"><CODE>J6NN</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI6</CODE> &egrave; non negativo.</DD>
+<DT><A href="J6NP.html"><CODE>J6NP</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI6</CODE> &egrave; non positivo.</DD>
+<DT><A href="J6NZ.html"><CODE>J6NZ</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI6</CODE> &egrave; diverso da zero.</DD>
+<DT><A href="J6P.html"><CODE>J6P</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI6</CODE> &egrave; positivo.</DD>
+<DT><A href="J6Z.html"><CODE>J6Z</CODE></A></DT>
+<DD>Salta se il registro <CODE>rI6</CODE> &egrave; uguale a zero.</DD>
+<DT><A href="JAE.html"><CODE>JAE</CODE></A></DT>
+<DD>Salta se il registro <CODE>rA</CODE> &egrave; pari.</DD>
+<DT><A href="JAN.html"><CODE>JAN</CODE></A></DT>
+<DD>Salta se il registro <CODE>rA</CODE> &egrave; negativo.</DD>
+<DT><A href="JANN.html"><CODE>JANN</CODE></A></DT>
+<DD>Salta se il registro <CODE>rA</CODE> &egrave; non negativo.</DD>
+<DT><A href="JANP.html"><CODE>JANP</CODE></A></DT>
+<DD>Salta se il registro <CODE>rA</CODE> &egrave; non positivo.</DD>
+<DT><A href="JANZ.html"><CODE>JANZ</CODE></A></DT>
+<DD>Salta se il registro <CODE>rA</CODE> &egrave; diverso da zero.</DD>
+<DT><A href="JAO.html"><CODE>JAO</CODE></A></DT>
+<DD>Salta se il registro <CODE>rA</CODE> &egrave; dispari.</DD>
+<DT><A href="JAP.html"><CODE>JAP</CODE></A></DT>
+<DD>Salta se il registro <CODE>rA</CODE> &egrave; positivo.</DD>
+<DT><A href="JAZ.html"><CODE>JAZ</CODE></A></DT>
+<DD>Salta se il registro <CODE>rA</CODE> &egrave; uguale a zero.</DD>
+<DT><A href="JBUS.html"><CODE>JBUS</CODE></A></DT>
+<DD>Salta se un'unit&agrave; di ingresso/uscita &egrave; occupata.</DD>
+<DT><A href="JE.html"><CODE>JE</CODE></A></DT>
+<DD>Salta se uguale.</DD>
+<DT><A href="JG.html"><CODE>JG</CODE></A></DT>
+<DD>Salta se maggiore.</DD>
+<DT><A href="JGE.html"><CODE>JGE</CODE></A></DT>
+<DD>Salta se maggiore o uguale.</DD>
+<DT><A href="JL.html"><CODE>JL</CODE></A></DT>
+<DD>Salta se minore.</DD>
+<DT><A href="JLE.html"><CODE>JLE</CODE></A></DT>
+<DD>Salta se minore o uguale.</DD>
+<DT><A href="JMP.html"><CODE>JMP</CODE></A></DT>
+<DD>Salta senza condizioni.</DD>
+<DT><A href="JNE.html"><CODE>JNE</CODE></A></DT>
+<DD>Salta se diverso.</DD>
+<DT><A href="JNOV.html"><CODE>JNOV</CODE></A></DT>
+<DD>Salta se non si &egrave; verificata un'<EM>overflow</EM>.</DD>
+<DT><A href="JOV.html"><CODE>JOV</CODE></A></DT>
+<DD>Salta se si &egrave; verificata un'<EM>overflow</EM>.</DD>
+<DT><A href="JRED.html"><CODE>JRED</CODE></A></DT>
+<DD>Salta se un'unit&agrave; di ingresso/uscita &egrave; pronta.</DD>
+<DT><A href="JSJ.html"><CODE>JSJ</CODE></A></DT>
+<DD>Salta senza condizioni senza modificare il registro <CODE>rJ</CODE>.</DD>
+<DT><A href="JXE.html"><CODE>JXE</CODE></A></DT>
+<DD>Salta se il registro <CODE>rX</CODE> &egrave; pari.</DD>
+<DT><A href="JXN.html"><CODE>JXN</CODE></A></DT>
+<DD>Salta se il registro <CODE>rX</CODE> &egrave; negativo.</DD>
+<DT><A href="JXNN.html"><CODE>JXNN</CODE></A></DT>
+<DD>Salta se il registro <CODE>rX</CODE> &egrave; non negativo.</DD>
+<DT><A href="JXNP.html"><CODE>JXNP</CODE></A></DT>
+<DD>Salta se il registro <CODE>rX</CODE> &egrave; non positivo.</DD>
+<DT><A href="JXNZ.html"><CODE>JXNZ</CODE></A></DT>
+<DD>Salta se il registro <CODE>rX</CODE> &egrave; diverso da zero.</DD>
+<DT><A href="JXO.html"><CODE>JXO</CODE></A></DT>
+<DD>Salta se il registro <CODE>rX</CODE> &egrave; dispari.</DD>
+<DT><A href="JXP.html"><CODE>JXP</CODE></A></DT>
+<DD>Salta se il registro <CODE>rX</CODE> &egrave; positivo.</DD>
+<DT><A href="JXZ.html"><CODE>JXZ</CODE></A></DT>
+<DD>Salta se il registro <CODE>rX</CODE> &egrave; uguale a zero.</DD>
+<DT><A href="LD1.html"><CODE>LD1</CODE></A></DT>
+<DD>Carica l'operando nel registro <CODE>rI1</CODE>.</DD>
+<DT><A href="LD1N.html"><CODE>LD1N</CODE></A></DT>
+<DD>Carica l'operando cambiato di segno nel registro <CODE>rI1</CODE>.</DD>
+<DT><A href="LD2.html"><CODE>LD2</CODE></A></DT>
+<DD>Carica l'operando nel registro <CODE>rI2</CODE>.</DD>
+<DT><A href="LD2N.html"><CODE>LD2N</CODE></A></DT>
+<DD>Carica l'operando cambiato di segno nel registro <CODE>rI2</CODE>.</DD>
+<DT><A href="LD3.html"><CODE>LD3</CODE></A></DT>
+<DD>Carica l'operando nel registro <CODE>rI3</CODE>.</DD>
+<DT><A href="LD3N.html"><CODE>LD3N</CODE></A></DT>
+<DD>Carica l'operando cambiato di segno nel registro <CODE>rI3</CODE>.</DD>
+<DT><A href="LD4.html"><CODE>LD4</CODE></A></DT>
+<DD>Carica l'operando nel registro <CODE>rI4</CODE>.</DD>
+<DT><A href="LD4N.html"><CODE>LD4N</CODE></A></DT>
+<DD>Carica l'operando cambiato di segno nel registro <CODE>rI4</CODE>.</DD>
+<DT><A href="LD5.html"><CODE>LD5</CODE></A></DT>
+<DD>Carica l'operando nel registro <CODE>rI5</CODE>.</DD>
+<DT><A href="LD5N.html"><CODE>LD5N</CODE></A></DT>
+<DD>Carica l'operando cambiato di segno nel registro <CODE>rI5</CODE>.</DD>
+<DT><A href="LD6.html"><CODE>LD6</CODE></A></DT>
+<DD>Carica l'operando nel registro <CODE>rI6</CODE>.</DD>
+<DT><A href="LD6N.html"><CODE>LD6N</CODE></A></DT>
+<DD>Carica l'operando cambiato di segno nel registro <CODE>rI6</CODE>.</DD>
+<DT><A href="LDA.html"><CODE>LDA</CODE></A></DT>
+<DD>Carica l'operando nel registro <CODE>rA</CODE>.</DD>
+<DT><A href="LDAN.html"><CODE>LDAN</CODE></A></DT>
+<DD>Carica l'operando cambiato di segno nel registro <CODE>rA</CODE>.</DD>
+<DT><A href="LDX.html"><CODE>LDX</CODE></A></DT>
+<DD>Carica l'operando nel registro <CODE>rX</CODE>.</DD>
+<DT><A href="LDXN.html"><CODE>LDXN</CODE></A></DT>
+<DD>Carica l'operando cambiato di segno nel registro <CODE>rX</CODE>.</DD>
+<DT><A href="MOVE.html"><CODE>MOVE</CODE></A></DT>
+<DD>Sposta in memoria un blocco di parole dall'indirizzo dell'operando
+    all'indirizzo contenuto nel registro <CODE>rI1</CODE>.</DD>
+<DT><A href="MUL.html"><CODE>MUL</CODE></A></DT>
+<DD>Moltiplica l'operando con il registro <CODE>rA</CODE>,
+    e mette il risultato nel registro <CODE>rAX</CODE>.</DD>
+<DT><A href="NOP.html"><CODE>NOP</CODE></A></DT>
+<DD>Non fa nulla.</DD>
+<DT><A href="NUM.html"><CODE>NUM</CODE></A></DT>
+<DD>Interpreta il contenuto del registro <CODE>rAX</CODE> come
+    una sequenza di simboli alfanumerici e lo converte in un
+    valore numerico, che deposita nel registro <CODE>rA</CODE>.</DD>
+<DT><A href="OUT.html"><CODE>OUT</CODE></A></DT>
+<DD>Trasferisce un blocco di dati dalla memoria a un'unit&agrave; di ingresso/uscita.</DD>
+<DT><A href="SLA.html"><CODE>SLA</CODE></A></DT>
+<DD>Fa scorrere a sinistra il registro <CODE>rA</CODE>.</DD>
+<DT><A href="SLAX.html"><CODE>SLAX</CODE></A></DT>
+<DD>Fa scorrere a sinistra il registro <CODE>rAX</CODE>.</DD>
+<DT><A href="SLB.html"><CODE>SLB</CODE></A></DT>
+<DD>Fa scorrere a sinistra in binario il registro <CODE>rAX</CODE>.</DD>
+<DT><A href="SLC.html"><CODE>SLC</CODE></A></DT>
+<DD>Ruota il registro <CODE>rAX</CODE> a sinistra.</DD>
+<DT><A href="SRA.html"><CODE>SRA</CODE></A></DT>
+<DD>Fa scorrere a destra il registro <CODE>rA</CODE>.</DD>
+<DT><A href="SRAX.html"><CODE>SRAX</CODE></A></DT>
+<DD>Fa scorrere a destra il registro <CODE>rAX</CODE>.</DD>
+<DT><A href="SRB.html"><CODE>SRB</CODE></A></DT>
+<DD>Fa scorrere a destra in binario il registro <CODE>rAX</CODE>.</DD>
+<DT><A href="SRC.html"><CODE>SRC</CODE></A></DT>
+<DD>Ruota il registro <CODE>rAX</CODE> a destra.</DD>
+<DT><A href="ST1.html"><CODE>ST1</CODE></A></DT>
+<DD>Scrive il contenuto del registro <CODE>rI1</CODE> nell'operando.</DD>
+<DT><A href="ST2.html"><CODE>ST2</CODE></A></DT>
+<DD>Scrive il contenuto del registro <CODE>rI2</CODE> nell'operando.</DD>
+<DT><A href="ST3.html"><CODE>ST3</CODE></A></DT>
+<DD>Scrive il contenuto del registro <CODE>rI3</CODE> nell'operando.</DD>
+<DT><A href="ST4.html"><CODE>ST4</CODE></A></DT>
+<DD>Scrive il contenuto del registro <CODE>rI4</CODE> nell'operando.</DD>
+<DT><A href="ST5.html"><CODE>ST5</CODE></A></DT>
+<DD>Scrive il contenuto del registro <CODE>rI5</CODE> nell'operando.</DD>
+<DT><A href="ST6.html"><CODE>ST6</CODE></A></DT>
+<DD>Scrive il contenuto del registro <CODE>rI6</CODE> nell'operando.</DD>
+<DT><A href="STA.html"><CODE>STA</CODE></A></DT>
+<DD>Scrive il contenuto del registro <CODE>rA</CODE> nell'operando.</DD>
+<DT><A href="STJ.html"><CODE>STJ</CODE></A></DT>
+<DD>Scrive il contenuto del registro <CODE>rJ</CODE> nell'operando.</DD>
+<DT><A href="STX.html"><CODE>STX</CODE></A></DT>
+<DD>Scrive il contenuto del registro <CODE>rX</CODE> nell'operando.</DD>
+<DT><A href="STZ.html"><CODE>STZ</CODE></A></DT>
+<DD>Azzera l'operando.</DD>
+<DT><A href="SUB.html"><CODE>SUB</CODE></A></DT>
+<DD>Sottrae l'operando al registro <CODE>rA</CODE>.</DD>
+</DL>
+
+<H3>Tempi di esecuzione</H3>
+
+<P>Ciascuna operazione ha un proprio tempo di esecuzione, espresso in un'unit&agrave;
+arbitraria di tempo <VAR>u</VAR> che potremmo definire come un "ciclo di <EM>clock</EM>".
+La seguente tabella fornisce i tempi di esecuzione delle varie famiglie
+di operazioni.</P>
+<TABLE border=1>
+    <TR><TD><CODE>NOP</CODE></TD><TD> 1 </TD>
+        <TD><CODE>ADD</CODE></TD><TD> 2 </TD>
+        <TD><CODE>SUB</CODE></TD><TD> 2 </TD>
+        <TD><CODE>MUL</CODE></TD><TD>10 </TD>
+    </TR>
+    <TR><TD><CODE>DIV</CODE></TD><TD>12 </TD>
+        <TD><CODE>NUM</CODE></TD><TD>10 </TD>
+        <TD><CODE>CHAR</CODE></TD><TD> 10 </TD>
+        <TD><CODE>HLT</CODE></TD><TD> 10 </TD>
+    </TR>
+    <TR><TD><CODE>SLx</CODE></TD><TD> 2 </TD>
+        <TD><CODE>SRx</CODE></TD><TD> 2 </TD>
+        <TD><CODE>LDx</CODE></TD><TD> 2 </TD>
+        <TD><CODE>STx</CODE></TD><TD> 2 </TD>
+    </TR>
+    <TR><TD><CODE>JBUS</CODE></TD><TD> 1 </TD>
+        <TD><CODE>IOC</CODE></TD><TD> 1 + <VAR>T</VAR></TD>
+        <TD><CODE>IN</CODE></TD><TD> 1 + <VAR>T</VAR></TD>
+        <TD><CODE>OUT</CODE></TD><TD> 1 + <VAR>T</VAR></TD>
+    </TR>
+    <TR><TD><CODE>JRED</CODE></TD><TD> 1 </TD>
+        <TD><CODE>Jx</CODE></TD><TD> 1 </TD>
+        <TD><CODE>INCx</CODE></TD><TD> 1 </TD>
+        <TD><CODE>DECx</CODE></TD><TD> 1 </TD>
+    </TR>
+    <TR><TD><CODE>ENTx</CODE></TD><TD> 1 </TD>
+        <TD><CODE>ENNx</CODE></TD><TD> 1 </TD>
+        <TD><CODE>CMPx</CODE></TD><TD> 2 </TD>
+        <TD><CODE>MOVE</CODE></TD><TD> 1 + 2<VAR>F</VAR> </TD>
+    </TR>
+    <TR><TD><CODE>FADD</CODE></TD><TD> 4 </TD>
+        <TD><CODE>FSUB</CODE></TD><TD> 4 </TD>
+        <TD><CODE>FMUL</CODE></TD><TD> 9 </TD>
+        <TD><CODE>FDIV</CODE></TD><TD> 11 </TD>
+    </TR>
+    <TR><TD><CODE>FLOT</CODE></TD><TD> 3 </TD>
+        <TD><CODE>FIX</CODE></TD><TD> 3 </TD>
+        <TD><CODE>FCMP</CODE></TD><TD> 4 </TD>
+    </TR>
+</TABLE>
+<P>dove
+<VAR>T</VAR> rappresenta il tempo di <EM>interlock</EM> del sottosistema di
+ingresso/uscita (che in questa simulazione viene supposto nullo) e
+<VAR>F</VAR> denota il valore del campo modificatore dell'istruzione.</P>
+
+</BODY>
+</HTML>

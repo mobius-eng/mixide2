@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>END</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>END</H1>
+
+<!-- Breve descrizione -->
+<P>Segnala la fine del programma e assegna l'indirizzo della prima istruzione.</P>
+
+<H2>Sintassi</H2>
+
+<BLOCKQUOTE>
+  <STRONG><CODE>END</CODE></STRONG>&nbsp;&nbsp;&lt;espressione&gt;
+</BLOCKQUOTE>
+
+<H2>Descrizione</H2>
+
+<P>Questa direttiva segnala la fine del programma e, soprattutto,
+specifica l'indirizzo della prima istruzione che dovr&agrave;
+essere eseguita quando il programma sar&agrave; lanciato.
+L'espressione fornita come argomento viene valutata e il suo
+valore viene utilizzato per impostare il <EM>location pointer</EM>
+della macchina MIX nel momento in cui il programma assemblato
+viene caricato.</P>
+
+<P>Per essere compilato correttamente, un programma <EM>deve</EM>
+essere terminato da questa direttiva. L'assemblatore segnaler&agrave;
+un <A href="errors.html">errore</A> se questa direttiva &egrave;
+mancante.</P>
+
+<H2>Esempio</H2>
+
+<P>La direttiva</P>
+
+<BLOCKQUOTE>
+  <STRONG><CODE>END</CODE></STRONG>&nbsp;&nbsp;<CODE>1000</CODE>
+</BLOCKQUOTE>
+
+<P>termina il programma e indica che l'esecuzione avverr&agrave;
+a partire dall'istruzione che si trova in memoria all'indirizzo
+<CODE>1000</CODE>.</P>
+
+</BODY>
+</HTML>

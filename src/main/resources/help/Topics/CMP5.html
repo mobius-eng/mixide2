@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>CMP5</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>CMP5</H1>
+
+<!-- Breve descrizione -->
+<P>Confronta il registro <CODE>rI5</CODE> con l'operando.</P>
+
+<H2>Codice operativo: 61</H2>
+
+<H2>Modificatore</H2>
+
+<P>Il modificatore viene interpretato come specifica di campo
+dell'operando; per <EM>default</EM> vale <CODE>05</CODE> e specifica
+dunque la parola intera (0:5).</P>
+
+<H2>Descrizione</H2>
+
+<P>Il registro <CODE>rI5</CODE> viene confrontato con l'operando <VAR>V</VAR>,
+assegnando all'indicatore di confronto <CODE>CM</CODE> il valore appropriato.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <P>
+  Se <CODE>rI5</CODE> &lt; <VAR>V</VAR><BR>
+  &nbsp;&nbsp;<CODE>CM</CODE> &#8592; <CODE>'&lt;'</CODE>;
+  </P>
+  <P>
+  Se <CODE>rI5</CODE> = <VAR>V</VAR><BR>
+  &nbsp;&nbsp;<CODE>CM</CODE> &#8592; <CODE>'='</CODE>;
+  </P>
+  <P>
+  Se <CODE>rI5</CODE> &gt; <VAR>V</VAR><BR>
+  &nbsp;&nbsp;<CODE>CM</CODE> &#8592; <CODE>'&gt;'</CODE>.
+  </P>
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD><CODE>TERM</CODE></TD>
+    <TD><STRONG><A href="EQU.html"><CODE>EQU</CODE></A></STRONG></TD>
+    <TD><CODE>19</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>NUM1</CODE></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>123</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>NUM2</CODE></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>456</CODE></TD>
+  </TR>
+  <TR>
+    <TD width=80><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="LD5.html"><CODE>LD5</CODE></A></STRONG></TD>
+    <TD><CODE>NUM1</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>CMP5</CODE></STRONG></TD>
+    <TD><CODE>NUM2</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="JL.html"><CODE>JL</CODE></A></STRONG></TD>
+    <TD><CODE>MINORE</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="LDA.html"><CODE>LDA</CODE></A></STRONG></TD>
+    <TD><CODE>SIMBOLI(2:3)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="STA.html"><CODE>STA</CODE></A></STRONG></TD>
+    <TD><CODE>SEGNO(2:3)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="JMP.html"><CODE>JMP</CODE></A></STRONG></TD>
+    <TD><CODE>RISPONDE</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>MINORE</CODE></TD>
+    <TD><STRONG><A href="LDA.html"><CODE>LDA</CODE></A></STRONG></TD>
+    <TD><CODE>SIMBOLI(1:1)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="STA.html"><CODE>STA</CODE></A></STRONG></TD>
+    <TD><CODE>SEGNO(2:2)</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>RISPONDE</CODE></TD>
+    <TD><STRONG><A href="OUT.html"><CODE>OUT</CODE></A></STRONG></TD>
+    <TD><CODE>MSG(TERM)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>SIMBOLI</CODE></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"&lt;&gt;=&nbsp;&nbsp;"</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>MSG</CODE></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"NUM1&nbsp;"</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>SEGNO</CODE></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ALF.html"><CODE>ALF</CODE></A></STRONG></TD>
+    <TD><CODE>"NUM2."</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>scrive sul terminale il messaggio
+"<CODE>NUM1&nbsp;&nbsp;&lt;&nbsp;&nbsp;&nbsp;NUM2.</CODE>".</P>
+
+<H2>Vedi anche</H2>
+
+<P>Le <A href="mixal.html#jumps">istruzioni di salto</A> con
+condizioni basate sull'indicatore <CODE>CM</CODE>:
+<A href="JE.html"><CODE>JE</CODE></A>,
+<A href="JG.html"><CODE>JG</CODE></A>,
+<A href="JGE.html"><CODE>JGE</CODE></A>,
+<A href="JL.html"><CODE>JL</CODE></A>,
+<A href="JLE.html"><CODE>JLE</CODE></A> e
+<A href="JNE.html"><CODE>JNE</CODE></A>.</P>
+
+</BODY>
+</HTML>

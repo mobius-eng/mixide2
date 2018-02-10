@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE map
+  PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN"
+         "http://java.sun.com/products/javahelp/map_1_0.dtd">
+
+<!-- Questo file contiene le associazioni tra identificatori interni
+  -- all'applicazione degli argomenti di help e gli URL delle pagine
+  -- HTML da visualizzare quando l'utente chiede aiuto su quegli
+  -- argomenti.
+  -- Aggiungere una nuova entry ogni volta che si definisce un
+  -- nuovo identificatore e/o una nuova pagina HTML!
+  -->
+<map version="1.0">
+	<mapID target="main" url="Topics/main.html" />
+	<mapID target="menus" url="Topics/menus.html" />
+	<mapID target="memview" url="Topics/memview.html" />
+	<mapID target="termview" url="Topics/termview.html" />
+	<mapID target="regview" url="Topics/regview.html" />
+	<mapID target="mixal" url="Topics/mixal.html" />
+	<mapID target="floating-point" url="Topics/floating-point.html" />
+	<mapID target="char_codes" url="Topics/char_codes.html" />
+</map>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>FLOT</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>FLOT</H1>
+
+<!-- Breve descrizione -->
+<P>Converte il registro <CODE>rA</CODE> da intero in virgola mobile.</P>
+
+<H2>Codice operativo: 05</H2>
+
+<P>N.B.: Il codice operativo <CODE>05</CODE> &egrave; condiviso con
+le istruzioni
+<A href="CHAR.html"><CODE>CHAR</CODE></A>,
+<A href="NUM.html"><CODE>NUM</CODE></A>,
+<A href="HLT.html"><CODE>HLT</CODE></A> e
+<A href="FIX.html"><CODE>FIX</CODE></A>.</P>
+
+<H2>Modificatore: 06</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>06</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>Il contenuto del registro <CODE>rA</CODE> viene letto come un numero
+(intero) rappresentato in virgola fissa e convertito nella sua rappresentazione
+in virgola mobile.</P>
+<P>La rappresentazione in virgola mobile in base 64 utilizzata dalla macchina
+MIX occupa una parola di memoria (o un registro dati) ed &egrave; la seguente:</P>
+<UL>
+<LI>il campo segno contiene il segno del numero rappresentato;</LI>
+<LI>il <EM>byte</EM> 1 contiene l'esponente in rappresentazione "eccesso 32":
+    significa che, posto <VAR>e</VAR> = contenuto del <EM>byte</EM> 1,
+    l'esponente &egrave; dato da <VAR>e</VAR> &minus; 32;</LI>
+<LI>la sottoparola (2:5) contiene la mantissa <VAR>f</VAR> che, per convenzione,
+    deve essere interpretata come parte frazionale di un numero &lt; 1; il
+    numero &egrave; <EM>normalizzato</EM> se, inoltre, <VAR>f</VAR> &gt;= 1/64.</LI>
+</UL>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rA</CODE> &#8592; Float(<CODE>rA</CODE>).
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="ENTA.html"><CODE>ENTA</CODE></A></STRONG></TD>
+    <TD><CODE>10</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>FLOT</CODE></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rA</CODE> = <CODE>+ 33 10 00 00 00</CODE>, che &egrave;
+la rappresentazione in virgola mobile di <CODE>10.0</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P>Le altre  <A href="mixal.html#fp">istruzioni relative alla rappresentazione
+in virgola mobile</A>.</P>
+
+</BODY>
+</HTML>

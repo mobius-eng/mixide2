@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>CHAR</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>CHAR</H1>
+
+<!-- Breve descrizione -->
+<P>Converte il valore del registro <CODE>rA</CODE> nella sua rappresentazione
+decimale e la lascia nel registro <CODE>rAX</CODE>.</P>
+
+<H2>Codice operativo: 05</H2>
+
+<P>N.B.: Il codice operativo <CODE>05</CODE> &egrave; condiviso con
+le istruzioni
+<A href="NUM.html"><CODE>NUM</CODE></A>,
+<A href="HLT.html"><CODE>HLT</CODE></A>,
+<A href="FLOT.html"><CODE>FLOT</CODE></A> e
+<A href="FIX.html"><CODE>FIX</CODE></A>.</P>
+
+<H2>Modificatore: 01</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>01</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>Il valore assoluto del registro <CODE>rA</CODE> viene convertito nella sua
+rappresentazione come sequenza di caratteri alfanumerici in base 10.
+Il risultato della conversione, che non pu&ograve; essere pi&ugrave;
+lungo di 10 caratteri, viene depositato nei dieci <EM>byte</EM>
+del registro esteso <CODE>rAX</CODE>, preservandone il segno.
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rAX</CODE> &#8592; Char(<CODE>rA</CODE>) &#8901; sgn(<CODE>rA</CODE>).
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="LDA.html"><CODE>LDA</CODE></A></STRONG></TD>
+    <TD><CODE>ARG</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>CHAR</CODE></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>ARG</CODE></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>10</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rAX</CODE> = <CODE>+ 00 00 00 00 00 00 00 00 31 30</CODE>,
+che rappresenta la sequenza di caratteri
+<CODE>"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10"</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="NUM.html"><CODE>NUM</CODE></A> e
+<A href="HLT.html"><CODE>HLT</CODE></A>.</P>
+
+</BODY>
+</HTML>

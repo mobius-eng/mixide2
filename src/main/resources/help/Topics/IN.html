@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>IN</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>IN</H1>
+
+<!-- Breve descrizione -->
+<P>Trasferisce un blocco di dati da un'unit&agrave; di ingresso/uscita in memoria.</P>
+
+<H2>Codice operativo: 36</H2>
+
+<H2>Modificatore</H2>
+
+<P>Il modificatore viene interpretato come il numero di un'unit&agrave;
+di ingresso/uscita; per <EM>default</EM> vale <CODE>00</CODE> e identifica,
+quindi, l'unit&agrave <CODE>u0</CODE>. Ovviamente hanno senso solo valori
+fino a <CODE>20</CODE>. Per valori superiori, l'esecuzione dell'istruzione
+provoca un errore ed arresta la macchina MIX.</P>
+
+<H2>Descrizione</H2>
+
+<P>Legge un blocco di dati dall'unit&agrave; di ingresso/uscita indicata
+dal modificatore e lo scrive in memoria, in un blocco di celle contigue,
+a partire dall'indirizzo dell'operando <VAR>M</VAR>.</P>
+<P>La dimensione del blocco di dati dipende dal tipo di dispositivo
+di ingresso/uscita:</P>
+<UL>
+<LI>i nastri magnetici (unit&agrave; <CODE>u0</CODE> ... <CODE>u7</CODE> e
+    i dischi (unit&agrave; <CODE>u8</CODE> ... <CODE>u15</CODE>),
+    hanno una dimensione del blocco di dati di 100 parole;
+<LI>il lettore di schede perforate (unit&agrave; <CODE>u16</CODE>), ha una dimensione del blocco
+    di 16 parole, ovvero di 80 caratteri, che &egrave; anche la larghezza di una
+    linea;
+<LI>il perforatore di schede (unit&agrave; <CODE>u17</CODE>), ha una dimensione del blocco
+    di 16 parole, ovvero di 80 caratteri, che &egrave; anche la larghezza di una
+    linea;
+<LI>la stampante (unit&agrave; <CODE>u18</CODE>), ha una dimensione del blocco
+    di 24 parole, ovvero di 96 caratteri, che &egrave; anche la larghezza di una
+    linea;
+<LI>la telescrivente (unit&agrave; <CODE>u19</CODE>), in questa emulazione la
+    <A href="termview.html">finestra Terminale</A>, ha una dimensione del blocco di
+    14 parole, ovvero di 70 caratteri, che &egrave; anche la larghezza di una linea;
+<LI>la perforatrice di nastro cartaceo (unit&agrave; <CODE>u20</CODE>),
+    ha anch'essa una dimensione del blocco pari a 14 parole.
+</UL>
+<P>Si noti che leggere da un'unit&agrave; di sola uscita, come per esempio la
+stampante, non genera un errore, ma azzera un blocco di memoria di dimensione
+corrispendente alla dimensione del blocco dell'unit&agrave; corrispondente.</P>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD><CODE>NASTRO</CODE></TD>
+    <TD><STRONG><A href="EQU.html"><CODE>EQU</CODE></A></STRONG></TD>
+    <TD><CODE>7</CODE></TD>
+  </TR>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><CODE>IN</CODE></STRONG></TD>
+    <TD><CODE>BUFFER(NASTRO)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>BUFFER</CODE></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>legge un blocco di 100 parole dal nastro <CODE>u7</CODE> e lo scrive
+all'indirizzo <CODE>BUFFER</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="IOC.html"><CODE>IOC</CODE></A>, <A href="OUT.html"><CODE>OUT</CODE></A>.</P>
+
+</BODY>
+</HTML>

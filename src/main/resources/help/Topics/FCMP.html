@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>FCMP</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>FCMP</H1>
+
+<!-- Breve descrizione -->
+<P>Confronta il registro <CODE>rA</CODE> con l'operando in virgola mobile.</P>
+
+<H2>Codice operativo: 56</H2>
+
+<P>N.B.: Il codice operativo <CODE>56</CODE> &egrave; condiviso con
+l'istruzione <A href="CMPA.html"><CODE>CMPA</CODE></A>.</P>
+
+<H2>Modificatore: 06</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>06</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>Il contenuto del registro <CODE>rA</CODE>, interpretato come numero in virgola
+mobile, viene confrontato con il contenuto della cella di memoria di indirizzo
+<VAR>M</VAR>, anch'esso interpretato come numero in virgola mobile, assegnando
+all'indicatore di confronto <CODE>CM</CODE> il valore appropriato.</P>
+
+<P>Il confronto &egrave; approssimato, nel senso che la condizione di
+uguaglianza si verifica se i due operandi non differiscono di pi&ugrave;
+di un valore <CODE>EPSILON</CODE> che viene letto, per convenzione,
+dalla prima cella della memoria, quella con indirizzo 0, anch'esso
+ovviamente espresso in rappresentazione a virgola mobile.
+Se <CODE>EPSILON</CODE> = 0, il confronto d&agrave; esito <CODE>'='</CODE>
+solo se i due operandi sono identici.</P>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <P>
+  Se <CODE>rA</CODE> &lt; <VAR>V</VAR><BR>
+  &nbsp;&nbsp;<CODE>CM</CODE> &#8592; <CODE>'&lt;'</CODE>;
+  </P>
+  <P>
+  Se <CODE>rA</CODE> &cong; <VAR>V</VAR><BR>
+  &nbsp;&nbsp;<CODE>CM</CODE> &#8592; <CODE>'='</CODE>;
+  </P>
+  <P>
+  Se <CODE>rA</CODE> &gt; <VAR>V</VAR><BR>
+  &nbsp;&nbsp;<CODE>CM</CODE> &#8592; <CODE>'&gt;'</CODE>.
+  </P>
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ORIG.html"><CODE>ORIG</CODE></A></STRONG></TD>
+    <TD><CODE>0</CODE></TD>
+  </TR>
+  <TR>
+    <TD><CODE>EPSILON</CODE></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>33(0:1),2(2:2),0(3:5)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="ORIG.html"><CODE>ORIG</CODE></A></STRONG></TD>
+    <TD><CODE>1000</CODE></TD>
+  </TR>
+  <TR>
+    <TD width=80><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="ENTA.html"><CODE>ENTA</CODE></A></STRONG></TD>
+    <TD><CODE>1</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="FLOT.html"><CODE>FLOT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="FADD.html"><CODE>FADD</CODE></A></STRONG></TD>
+    <TD><CODE>NUMERO</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>FCMP</CODE></STRONG></TD>
+    <TD><CODE>NUMERO</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>NUMERO</CODE></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>34(1:1),1(2:2),0(3:5)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con l'indicatore di confronto <CODE>CM</CODE> = <CODE>'='</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P>Le <A href="mixal.html#jumps">istruzioni di salto</A> con
+condizioni basate sull'indicatore <CODE>CM</CODE>:
+<A href="JE.html"><CODE>JE</CODE></A>,
+<A href="JG.html"><CODE>JG</CODE></A>,
+<A href="JGE.html"><CODE>JGE</CODE></A>,
+<A href="JL.html"><CODE>JL</CODE></A>,
+<A href="JLE.html"><CODE>JLE</CODE></A> e
+<A href="JNE.html"><CODE>JNE</CODE></A>,
+nonch&eacute;
+le altre  <A href="mixal.html#fp">istruzioni relative alla rappresentazione
+in virgola mobile</A>.</P>
+
+</BODY>
+</HTML>

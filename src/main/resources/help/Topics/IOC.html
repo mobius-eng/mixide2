@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>IOC</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>IOC</H1>
+
+<!-- Breve descrizione -->
+<P>Esegue un'operazione di controllo su un'unit&agrave; di ingresso/uscita.</P>
+
+<H2>Codice operativo: 35</H2>
+
+<H2>Modificatore</H2>
+
+<P>Il modificatore viene interpretato come il numero di un'unit&agrave;
+di ingresso/uscita; per <EM>default</EM> vale <CODE>00</CODE> e identifica,
+quindi, l'unit&agrave <CODE>u0</CODE>. Ovviamente hanno senso solo valori
+fino a <CODE>20</CODE>. Per valori superiori, l'esecuzione dell'istruzione
+provoca un errore ed arresta la macchina MIX.</P>
+
+<H2>Descrizione</H2>
+
+<P>Esegue un'operazione di controllo, determinata dal valore dell'indirizzo
+dell'operando <VAR>M</VAR>, sull'unit&agrave; di ingresso/uscita indicata
+dal modificatore.</P>
+<P>L'effettivo significato di questa istruzione dipende dal tipo di dispositivo
+di ingresso/uscita a cui &egrave; applicata:</P>
+<UL>
+<LI>applicata a un nastro magnetico (unit&agrave; <CODE>u0</CODE> ... <CODE>u7</CODE>,
+    sposta la testina di lettura/scrittura di <VAR>M</VAR> celle rispetto alla
+    posizione corrente (in avanti se <VAR>M</VAR> > 0 o indietro se <VAR>M</VAR> < 0);
+    se invece <VAR>M</VAR> = 0, il nastro viene riavvolto completamente e la testina
+    posizionata sulla prima cella;
+<LI>applicata a un disco (unit&agrave; <CODE>u8</CODE> ... <CODE>u15</CODE>),
+    &egrave; permesso solo <VAR>M</VAR> = 0, che per&ograve;, almeno in questa
+    realizzazione della macchina MIX, non si traduce in alcuna operazione sul disco
+    in questione;
+<LI>applicata alla stampante (unit&agrave; <CODE>u18</CODE>),
+    &egrave; permesso solo <VAR>M</VAR> = 0, nel qual caso l'operazione determina
+    un salto di pagina (<EM>form feed</EM>), posizionando la testina della stampante
+    all'inizio della pagina successiva;
+<LI>applicata alla perforatrice di nastro cartaceo (unit&agrave; <CODE>u20</CODE>),
+    &egrave; permesso solo <VAR>M</VAR> = 0, nel qual caso il nastro viene riavvolto
+    completamente e la testina di perforazione posizionata al suo inizio.
+<LI>applicata a qualsiasi altra unit&agrave;, quale che sia valore di <VAR>M</VAR>,
+    questa istruzione produce un errore e fa arrestare la macchina.
+</UL>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD><CODE>NASTRO</CODE></TD>
+    <TD><STRONG><A href="EQU.html"><CODE>EQU</CODE></A></STRONG></TD>
+    <TD><CODE>7</CODE></TD>
+  </TR>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><CODE>IOC</CODE></STRONG></TD>
+    <TD><CODE>0(NASTRO)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="JBUS.html"><CODE>JBUS</CODE></A></STRONG></TD>
+    <TD><CODE>*(NASTRO)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="IN.html"><CODE>IN</CODE></A></STRONG></TD>
+    <TD><CODE>BUFFER(NASTRO)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>BUFFER</CODE></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>riavvolge il nastro <CODE>u7</CODE> e, non appena il riavvolgimento
+(che avviene in modo asincrono e che pu&ograve; durare un tempo arbitrario)
+&egrave; stato effettuato e l'unit&agrave; &egrave; di nuovo disponibile,
+legge un blocco di dati dal nastro all'indirizzo <CODE>BUFFER</CODE>.</P>
+
+<H2>Vedi anche</H2>
+
+<P><A href="IN.html"><CODE>IN</CODE></A>, <A href="OUT.html"><CODE>OUT</CODE></A>.</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>FIX</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>FIX</H1>
+
+<!-- Breve descrizione -->
+<P>Converte il registro <CODE>rA</CODE> da virgola mobile in intero.</P>
+
+<H2>Codice operativo: 05</H2>
+
+<P>N.B.: Il codice operativo <CODE>05</CODE> &egrave; condiviso con
+le istruzioni
+<A href="CHAR.html"><CODE>CHAR</CODE></A>,
+<A href="NUM.html"><CODE>NUM</CODE></A>,
+<A href="HLT.html"><CODE>HLT</CODE></A> e
+<A href="FLOT.html"><CODE>FLOT</CODE></A>.</P>
+
+<H2>Modificatore: 07</H2>
+
+<P>Il modificatore, con valore fisso pari a <CODE>07</CODE>, fa parte
+integrante della specifica di questa operazione.</P>
+
+<H2>Descrizione</H2>
+
+<P>Il contenuto del registro <CODE>rA</CODE> viene letto come un numero
+rappresentato in virgola mobile e convertito nel pi&ugrave; vicino numero
+intero, espresso nella normale rappresentazione a virgola fissa.</P>
+<P>La rappresentazione in virgola mobile in base 64 utilizzata dalla macchina
+MIX occupa una parola di memoria (o un registro dati) ed &egrave; la seguente:</P>
+<UL>
+<LI>il campo segno contiene il segno del numero rappresentato;</LI>
+<LI>il <EM>byte</EM> 1 contiene l'esponente in rappresentazione "eccesso 32":
+    significa che, posto <VAR>e</VAR> = contenuto del <EM>byte</EM> 1,
+    l'esponente &egrave; dato da <VAR>e</VAR> &minus; 32;</LI>
+<LI>la sottoparola (2:5) contiene la mantissa <VAR>f</VAR> che, per convenzione,
+    deve essere interpretata come parte frazionale di un numero &lt; 1; il
+    numero &egrave; <EM>normalizzato</EM> se, inoltre, <VAR>f</VAR> &gt;= 1/64.</LI>
+</UL>
+
+<P>In simboli:</P>
+<BLOCKQUOTE>
+  <CODE>rA</CODE> &#8592; Round(<CODE>rA</CODE>).
+</BLOCKQUOTE>
+
+<H2>Esempio</H2>
+
+<P>Il programma</P>
+
+<BLOCKQUOTE>
+  <TABLE cellpadding=0>
+  <TR>
+    <TD width=60><CODE>INIZIO</CODE></TD>
+    <TD width=40><STRONG><A href="ENTA.html"><CODE>ENTA</CODE></A></STRONG></TD>
+    <TD><CODE>100</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="FLOT.html"><CODE>FLOT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="FMUL.html"><CODE>FMUL</CODE></A></STRONG></TD>
+    <TD><CODE>PIGRECO</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><CODE>FIX</CODE></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="HLT.html"><CODE>HLT</CODE></A></STRONG></TD>
+    <TD></TD>
+  </TR>
+  <TR>
+    <TD><CODE>PIGRECO</CODE></TD>
+    <TD><STRONG><A href="CON.html"><CODE>CON</CODE></A></STRONG></TD>
+    <TD><CODE>33(0:1),823550(2:5)</CODE></TD>
+  </TR>
+  <TR>
+    <TD></TD>
+    <TD><STRONG><A href="END.html"><CODE>END</CODE></A></STRONG></TD>
+    <TD><CODE>INIZIO</CODE></TD>
+  </TR>
+  </TABLE>
+</BLOCKQUOTE>
+
+<P>termina con <CODE>rA</CODE> = <CODE>+ 00 00 00 04 58</CODE>, che &egrave;
+la rappresentazione in virgola fissa di 314, l'intero pi&ugrave; vicino
+a 314.15926.</P>
+
+<H2>Vedi anche</H2>
+
+<P>Le altre  <A href="mixal.html#fp">istruzioni relative alla rappresentazione
+in virgola mobile</A>.</P>
+
+</BODY>
+</HTML>

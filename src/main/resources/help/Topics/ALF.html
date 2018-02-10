@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//IT">
+<HTML>
+<HEAD>
+<TITLE>ALF</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<H1>ALF</H1>
+
+<!-- Breve descrizione -->
+<P>Inserisce nella prossima cella di memoria dei caratteri alfanumerici.</P>
+
+<H2>Sintassi</H2>
+
+<BLOCKQUOTE>
+  <STRONG><CODE>ALF</CODE></STRONG>&nbsp;&nbsp;
+  <CODE>"</CODE>&lt;car<sub>1</sub>&gt;&lt;car<sub>2</sub>&gt;&lt;car<sub>3</sub>&gt;&lt;car<sub>4</sub>&gt;&lt;car<sub>5</sub>&gt;<CODE>"</CODE>
+</BLOCKQUOTE>
+
+<P><STRONG>Nota:</STRONG> la sintassi di questa direttiva devia leggermente
+da quella standard. Nella sintassi di Knuth, i cinque caratteri non devono
+essere racchiusi tra virgolette; inoltre, i caratteri possono essere pi&ugrave;
+di cinque, nel qual caso quelli in eccesso semplicemente vengono ignorati.</P>
+
+<H2>Descrizione</H2>
+
+<P>Questa direttiva assembla all'indirizzo corrente (<CODE>*</CODE>)
+una parola il cui segno &egrave; positivo e i cui cinque <EM>byte</EM>
+contengono, rispettivamente, i codici dei cinque caratteri
+&lt;car<sub>1</sub>&gt;, &lt;car<sub>2</sub>&gt;, &lt;car<sub>3</sub>&gt;,
+&lt;car<sub>4</sub>&gt; e &lt;car<sub>5</sub>&gt;.</P>
+
+<H2>Esempio</H2>
+
+<P>La direttiva</P>
+
+<BLOCKQUOTE>
+  <STRONG><CODE>ALF</CODE></STRONG>&nbsp;&nbsp;
+  <CODE>"PROVA"</CODE>
+</BLOCKQUOTE>
+
+<P>assembla in memoria, all'indirizzo corrente, la parola</P>
+
+<BLOCKQUOTE>
+  <CODE>+ 17 19 16 25 01</CODE>
+</BLOCKQUOTE>
+
+<H2>Vedi anche</H2>
+
+<P><A href="char_codes.html">Codifica dei caratteri</A> e
+la direttiva <A href="CON-directive.html"><CODE>CON</CODE></A>.</P>
+
+</BODY>
+</HTML>
